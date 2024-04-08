@@ -18,6 +18,10 @@ body {
   color: red;
 }
 
+.success-message {
+  color: green;
+}
+
 .sign-up-form {
   width: 600px;
   height: 500px;
