@@ -9,12 +9,12 @@ const emailMessage = document.getElementById("email-message");
 const ageMessage = document.getElementById("age-message");
 const pwMessage = document.getElementById("pw-message");
 const pwCheckMessage = document.getElementById("pw-check-message");
-
 const signUpBtn = document.getElementById("sign-up-btn");
+
+let successCount = 0;
 
 const writeValidation = () => {
   if (inputName.value == "") {
-    //이름 유효성 검사
     nameMessage.classList.add("fail-message");
     nameMessage.classList.remove("hide");
     nameMessage.innerText = "필수 입력 항목입니다!";
@@ -22,7 +22,6 @@ const writeValidation = () => {
     nameHandler();
   }
   if (inputEmail.value == "") {
-    //이메일 유효성 검사
     emailMessage.classList.add("fail-message");
     emailMessage.classList.remove("hide");
     emailMessage.innerText = "올바른 이메일 형식이 아닙니다!";
@@ -32,7 +31,6 @@ const writeValidation = () => {
   }
 
   if (inputAge.value == "") {
-    //나이 유효성 검사
     ageMessage.classList.add("fail-message");
     ageMessage.classList.remove("hide");
     ageMessage.innerText = "나이를 입력해주세요!";
@@ -41,20 +39,14 @@ const writeValidation = () => {
     ageHandler();
   }
 
-  if (inputPw.value == "") {
-    //비밀번호 유효성 검사
-    pwMessage.classList.add("fail-message");
-    pwMessage.classList.remove("hide");
-    pwMessage.innerText = "비밀번호는 최소 4자리 이상이어야 합니다.";
-    // signUpBtn.disabled = true;
-  }
+  pwHandler();
 
-  if (inputPwCheck.value == "") {
-    //비밀번호 확인 유효성 검사
+  if (inputPwCheck.value === "") {
     pwCheckMessage.classList.add("fail-message");
     pwCheckMessage.classList.remove("hide");
     pwCheckMessage.innerText = "비밀번호가 일치하지 않습니다.";
-    // signUpBtn.disabled = true;
+  } else {
+    pwCheckHandler();
   }
 };
 
@@ -64,16 +56,20 @@ const nameHandler = () => {
     nameMessage.classList.remove("hide");
     nameMessage.classList.add("success-message");
     nameMessage.innerText = "멋진 이름이에요!";
+    successCount++;
+    successModal();
   }
 };
 
 const emailHandler = () => {
-  const regex = new RegExp("[a-z0-9]+@[a-z]+.[a-z]{2,3}");
+  const reg = new RegExp("[a-z0-9]+@[a-z]+.[a-z]{2,3}");
 
-  if (regex.test(inputEmail.value)) {
+  if (reg.test(inputEmail.value)) {
     emailMessage.classList.remove("hide");
     emailMessage.classList.add("success-message");
     emailMessage.innerText = "올바른 이메일 형식입니다!";
+    successCount++;
+    successModal();
   }
 };
 
@@ -92,7 +88,48 @@ const ageHandler = () => {
     ageMessage.classList.remove("fail-message");
     ageMessage.classList.add("success-message");
     ageMessage.innerText = "올바른 나이 형식입니다!";
+    successCount++;
+    successModal();
   }
 };
+
+const pwHandler = () => {
+  let reg = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{4,12}$/;
+
+  pwMessage.classList.add("fail-message");
+  pwMessage.classList.remove("hide");
+  if (inputPw.value.length < 4) {
+    pwMessage.innerText = "비밀번호는 최소 4자리 이상이어야 합니다.";
+  } else if (inputPw.value.length > 12) {
+    pwMessage.innerText = "비밀번호는 최대 12자리까지 가능합니다.";
+  } else if (!reg.test(inputPw.value)) {
+    pwMessage.innerText =
+      "영어, 숫자, 특수문자를 모두 조합해서 비밀번호를 작성해야 합니다.";
+  } else {
+    pwMessage.classList.remove("fail-message");
+    pwMessage.classList.add("success-message");
+    pwMessage.innerText = "올바른 비밀번호입니다!";
+    successCount++;
+    successModal();
+  }
+};
+
+const pwCheckHandler = () => {
+  if (isNaN(inputPwCheck) && inputPwCheck.value === inputPw.value) {
+    pwCheckMessage.classList.remove("fail-message");
+    pwCheckMessage.classList.remove("hide");
+    pwCheckMessage.classList.add("success-message");
+    pwCheckMessage.innerText = "올바른 비밀번호입니다!";
+    successCount++;
+    successModal();
+  }
+};
+
+// const successModal = () => {
+//   if (successCount === 5) {
+
+//   }
+
+// }
 
 signUpBtn.addEventListener("click", writeValidation);
