@@ -22,9 +22,18 @@ body {
   color: green;
 }
 
+h1 {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+label {
+  text-align: left;
+}
+
 .sign-up-form {
   width: 600px;
-  height: 600px;
+  height: 570px;
   padding: 40px 60px;
   border-radius: 7px;
   background-color: rgba(253, 253, 253, 0.6);
@@ -45,6 +54,15 @@ input {
   content: "";
   display: block;
   margin-bottom: 20px;
+}
+
+#sign-up-btn {
+  width: 200px;
+  height: 30px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  background-color: rgb(116, 111, 111);
 }
 
 #modal-container {
@@ -70,11 +88,13 @@ input {
 }
 
 #modal strong {
-  font-size: 27px;
+  display: block;
+  margin-bottom: 20px;
+  font-size: 20px;
 }
 
 #modal p {
-  font-size: 20px;
+  font-size: 15px;
 }
 
 #closed {
