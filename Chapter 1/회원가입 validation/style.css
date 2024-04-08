@@ -1,0 +1,44 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(156, 210, 224);
+}
+
+.hide {
+  display: none;
+}
+
+.fail-message {
+  color: red;
+}
+
+.sign-up-form {
+  width: 600px;
+  height: 500px;
+  padding: 40px 60px;
+  border-radius: 7px;
+  background-color: rgba(253, 253, 253, 0.6);
+  text-align: center;
+}
+
+input {
+  width: 200px;
+  border: 1px solid white;
+  background-color: rgba(248, 248, 248, 0.1);
+}
+
+.name-container::after,
+.email-container::after,
+.age-container::after,
+.pw-container::after,
+.pw-check-container::after {
+  content: "";
+  display: block;
+  margin-bottom: 20px;
+}
