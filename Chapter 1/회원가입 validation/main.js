@@ -9,9 +9,10 @@ const emailMessage = document.getElementById("email-message");
 const ageMessage = document.getElementById("age-message");
 const pwMessage = document.getElementById("pw-message");
 const pwCheckMessage = document.getElementById("pw-check-message");
-const signUpBtn = document.getElementById("sign-up-btn");
 
-let successCount = 0;
+const signUpBtn = document.getElementById("sign-up-btn");
+const modalContainer = document.getElementById("modal-container");
+const closedBtn = document.getElementById("closed");
 
 const writeValidation = () => {
   if (inputName.value == "") {
@@ -56,7 +57,6 @@ const nameHandler = () => {
     nameMessage.classList.remove("hide");
     nameMessage.classList.add("success-message");
     nameMessage.innerText = "멋진 이름이에요!";
-    successCount++;
     successModal();
   }
 };
@@ -68,7 +68,6 @@ const emailHandler = () => {
     emailMessage.classList.remove("hide");
     emailMessage.classList.add("success-message");
     emailMessage.innerText = "올바른 이메일 형식입니다!";
-    successCount++;
     successModal();
   }
 };
@@ -88,7 +87,6 @@ const ageHandler = () => {
     ageMessage.classList.remove("fail-message");
     ageMessage.classList.add("success-message");
     ageMessage.innerText = "올바른 나이 형식입니다!";
-    successCount++;
     successModal();
   }
 };
@@ -109,7 +107,6 @@ const pwHandler = () => {
     pwMessage.classList.remove("fail-message");
     pwMessage.classList.add("success-message");
     pwMessage.innerText = "올바른 비밀번호입니다!";
-    successCount++;
     successModal();
   }
 };
@@ -120,16 +117,26 @@ const pwCheckHandler = () => {
     pwCheckMessage.classList.remove("hide");
     pwCheckMessage.classList.add("success-message");
     pwCheckMessage.innerText = "올바른 비밀번호입니다!";
-    successCount++;
     successModal();
   }
 };
 
-// const successModal = () => {
-//   if (successCount === 5) {
-
-//   }
-
-// }
-
 signUpBtn.addEventListener("click", writeValidation);
+
+const successModal = () => {
+  if (
+    nameMessage.innerText === "멋진 이름이에요!" &&
+    emailMessage.innerText === "올바른 이메일 형식입니다!" &&
+    ageMessage.innerText === "올바른 나이 형식입니다!" &&
+    pwMessage.innerText === "올바른 비밀번호입니다!" &&
+    pwCheckMessage.innerText === "올바른 비밀번호입니다!"
+  ) {
+    signUpBtn.onclick = () => {
+      modalContainer.style.display = "flex";
+    };
+  }
+
+  closedBtn.onclick = () => {
+    modalContainer.style.display = "none";
+  };
+};
