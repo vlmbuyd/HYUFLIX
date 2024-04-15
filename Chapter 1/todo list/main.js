@@ -24,6 +24,4 @@ const paintToDo = () => {
   });
 };
 
-const deleteToDo = () => {};
-
 toDoForm.addEventListener("submit", paintToDo);
