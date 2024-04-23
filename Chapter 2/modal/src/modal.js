@@ -34,12 +34,13 @@ const ClosedBtn = styled.button`
 `;
 
 function Modal() {
+  const clickClosed = () => console.log("모달이 꺼짐");
   return (
     <Container>
       <ModalContainer>
         <Title>안녕하세요</Title>
         <p>모달 내용은 어쩌고 저쩌고..</p>
-        <ClosedBtn>닫기</ClosedBtn>
+        <ClosedBtn onClick={clickClosed}>닫기</ClosedBtn>
       </ModalContainer>
     </Container>
   );
