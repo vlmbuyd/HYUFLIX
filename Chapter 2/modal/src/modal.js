@@ -1,34 +1,47 @@
 import styled from "styled-components";
-import { createGlobalStyle } from "styled-components";
-
-const GlobalStyles = createGlobalStyle`
-    * {
-        box-sizing: border-box;
-        margin: 0;
-    }
-
-    body {
-        background-color: grey;
-    }
-`;
 
 const Container = styled.div`
-  margin: auto;
-  width: 300px;
-  height: 130px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const ModalContainer = styled.div`
+  position: relative;
+  padding: 20px;
+  border-radius: 5px;
+  width: 330px;
+  height: 150px;
   background-color: white;
+`;
+
+const Title = styled.strong`
+  display: block;
+  margin-bottom: 20px;
+  font-size: 20px;
+`;
+
+const ClosedBtn = styled.button`
+  position: absolute;
+  right: 15px;
+  bottom: 20px;
 `;
 
 function Modal() {
   return (
-    <div>
-      <GlobalStyles></GlobalStyles>
-      <Container>
-        <strong>안녕하세요</strong>
+    <Container>
+      <ModalContainer>
+        <Title>안녕하세요</Title>
         <p>모달 내용은 어쩌고 저쩌고..</p>
-        <button>닫기</button>
-      </Container>
-    </div>
+        <ClosedBtn>닫기</ClosedBtn>
+      </ModalContainer>
+    </Container>
   );
 }
 
