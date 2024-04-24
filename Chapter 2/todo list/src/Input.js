@@ -4,6 +4,7 @@ const ToDoInput = styled.input`
   width: 500px;
   height: 55px;
   padding-left: 15px;
+  margin-bottom: 40px;
   border: 1px solid grey;
 
   &::placeholder {

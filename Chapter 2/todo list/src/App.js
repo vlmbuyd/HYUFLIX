@@ -1,6 +1,8 @@
-import { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 import Title from "./Title";
 import Input from "./Input";
+import ToDo from "./ToDo";
+import Done from "./Done";
 
 const GlobalStyle = createGlobalStyle`
   *{
@@ -9,17 +11,36 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    background-color:#dfeaed;
+    background-color:#ebf0f2;
   }
+`;
+
+const Container = styled.div`
+  width: 60%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 40px auto;
+`;
+
+const ToDoContainer = styled.div`
+  width: 600px;
+  display: flex;
+  justify-content: space-around;
 `;
 
 function App() {
   return (
-    <div>
+    <Container>
       <GlobalStyle></GlobalStyle>
       <Title></Title>
       <Input></Input>
-    </div>
+      <ToDoContainer>
+        <ToDo></ToDo>
+        <Done></Done>
+      </ToDoContainer>
+    </Container>
   );
 }
 

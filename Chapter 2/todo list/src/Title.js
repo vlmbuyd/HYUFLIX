@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const StudyPlan = styled.h1`
-  border-bottom: 2px solid #cee5ed;
+  border-bottom: 2px solid #d7dcde;
   margin-bottom: 35px;
   width: 600px;
   height: 100px;
