@@ -6,6 +6,12 @@ const ToDoTitle = styled.strong`
 
 const Ul = styled.ul`
   list-style: none;
+  padding-left: 0;
+`;
+
+const Li = styled.li`
+  margin-bottom: 8px;
+  border-bottom: 2px solid #d7dcde;
 `;
 
 function ToDo({ todos }) {
@@ -14,7 +20,9 @@ function ToDo({ todos }) {
       <ToDoTitle>해야 할 일</ToDoTitle>
       <Ul>
         {todos.map((todo, index) => (
-          <li key={index}>{todo}</li>
+          <Li key={index}>
+            {todo} <span>완료</span>
+          </Li>
         ))}
       </Ul>
     </div>
