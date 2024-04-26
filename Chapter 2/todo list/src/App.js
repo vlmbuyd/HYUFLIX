@@ -1,8 +1,6 @@
 import styled, { createGlobalStyle } from "styled-components";
 import Title from "./Title";
-import Input from "./Input";
-import ToDo from "./ToDo";
-import Done from "./Done";
+import ToDoContainer from "./ToDoContainer";
 
 const GlobalStyle = createGlobalStyle`
   *{
@@ -24,22 +22,12 @@ const Container = styled.div`
   margin: 40px auto;
 `;
 
-const ToDoContainer = styled.div`
-  width: 600px;
-  display: flex;
-  justify-content: space-around;
-`;
-
 function App() {
   return (
     <Container>
       <GlobalStyle></GlobalStyle>
       <Title></Title>
-      <Input></Input>
-      <ToDoContainer>
-        <ToDo></ToDo>
-        <Done></Done>
-      </ToDoContainer>
+      <ToDoContainer></ToDoContainer>
     </Container>
   );
 }
