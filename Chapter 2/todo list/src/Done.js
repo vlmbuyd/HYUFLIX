@@ -6,8 +6,31 @@ const DoneTitle = styled.strong`
   border-bottom: 2px solid #d7dcde;
 `;
 
-function Done() {
-  return <DoneTitle>해낸 일</DoneTitle>;
+const Ul = styled.ul`
+  list-style: none;
+  padding-left: 0;
+`;
+
+const Li = styled.li`
+  margin-bottom: 15px;
+  border-bottom: 2px solid #d7dcde;
+`;
+
+function Done({ todos }) {
+  return (
+    <div>
+      <DoneTitle>해낸 일</DoneTitle>
+      <Ul>
+        {todos.map((todo, index) =>
+          todo.isDone === true ? (
+            <Li key={index}>
+              {todo.content} <button>삭제</button>
+            </Li>
+          ) : null
+        )}
+      </Ul>
+    </div>
+  );
 }
 
 export default Done;

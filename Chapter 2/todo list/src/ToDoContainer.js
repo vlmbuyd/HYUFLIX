@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
-// import ToDo from "./ToDo";
-// import Done from "./Done";
+import ToDo from "./ToDo";
+import Done from "./Done";
 
 const Wrapper = styled.div`
   display: flex;
@@ -27,28 +27,6 @@ const ToDoWrapper = styled.div`
   justify-content: space-around;
 `;
 
-const ToDoTitle = styled.strong`
-  display: inline-block;
-  margin-bottom: 25px;
-  border-bottom: 2px solid #d7dcde;
-`;
-
-const Ul = styled.ul`
-  list-style: none;
-  padding-left: 0;
-`;
-
-const Li = styled.li`
-  margin-bottom: 15px;
-  border-bottom: 2px solid #d7dcde;
-`;
-
-const DoneTitle = styled.strong`
-  display: inline-block;
-  margin-bottom: 25px;
-  border-bottom: 2px solid #d7dcde;
-`;
-
 function ToDoContainer() {
   const [todo, setToDo] = useState("");
   const [todos, setToDos] = useState([]);
@@ -63,7 +41,6 @@ function ToDoContainer() {
       return;
     }
     setToDos([{ content: todo, isDone: false }, ...todos]);
-    console.log(todos);
     setToDo("");
   };
 
@@ -84,32 +61,8 @@ function ToDoContainer() {
         ></ToDoInput>
       </form>
       <ToDoWrapper>
-        <div>
-          <ToDoTitle>해야 할 일</ToDoTitle>
-          <Ul>
-            {todos &&
-              todos.map((todo, index) =>
-                todo.isDone === false ? (
-                  <Li key={index}>
-                    {todo.content}{" "}
-                    <button onClick={() => clickComplete(index)}>완료</button>
-                  </Li>
-                ) : null
-              )}
-          </Ul>
-        </div>
-        <div>
-          <DoneTitle>해낸 일</DoneTitle>
-          <Ul>
-            {todos.map((todo, index) =>
-              todo.isDone === true ? (
-                <Li key={index}>
-                  {todo.content} <button>삭제</button>
-                </Li>
-              ) : null
-            )}
-          </Ul>
-        </div>
+        <ToDo todos={todos} onClick={clickComplete}></ToDo>
+        <Done todos={todos}></Done>
       </ToDoWrapper>
     </Wrapper>
   );

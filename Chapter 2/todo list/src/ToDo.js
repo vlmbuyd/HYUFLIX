@@ -17,17 +17,20 @@ const Li = styled.li`
 `;
 
 function ToDo({ todos, onClick }) {
+  const handleClick = (index) => onClick(index);
   return (
     <div>
       <ToDoTitle>해야 할 일</ToDoTitle>
       <Ul>
-        {todos.map((todo, index) =>
-          todo.isDone === false ? (
-            <Li key={index}>
-              {todo.content} <button onClick={onClick}>완료</button>
-            </Li>
-          ) : null
-        )}
+        {todos &&
+          todos.map((todo, index) =>
+            todo.isDone === false ? (
+              <Li key={index}>
+                {todo.content}
+                <button onClick={() => handleClick(index)}>완료</button>
+              </Li>
+            ) : null
+          )}
       </Ul>
     </div>
   );
