@@ -16,7 +16,8 @@ const Li = styled.li`
   border-bottom: 2px solid #d7dcde;
 `;
 
-function Done({ todos }) {
+function Done({ todos, onClick }) {
+  const handleClick = (id) => onClick(id);
   return (
     <div>
       <DoneTitle>해낸 일</DoneTitle>
@@ -24,7 +25,8 @@ function Done({ todos }) {
         {todos.map((todo, index) =>
           todo.isDone === true ? (
             <Li key={index}>
-              {todo.content} <button>삭제</button>
+              {todo.content}{" "}
+              <button onClick={() => handleClick(todo.id)}>삭제</button>
             </Li>
           ) : null
         )}

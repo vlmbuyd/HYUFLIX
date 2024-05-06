@@ -29,6 +29,7 @@ const ToDoWrapper = styled.div`
 
 function ToDoContainer() {
   const [todo, setToDo] = useState("");
+  const [id, setId] = useState(1);
   const [todos, setToDos] = useState([]);
 
   const onChange = (event) => {
@@ -40,7 +41,8 @@ function ToDoContainer() {
     if (todo === "") {
       return;
     }
-    setToDos([{ content: todo, isDone: false }, ...todos]);
+    setId((id) => (id += 1));
+    setToDos([{ id: id, content: todo, isDone: false }, ...todos]);
     setToDo("");
   };
 
@@ -49,6 +51,10 @@ function ToDoContainer() {
       index === newIndex ? { ...newToDo, isDone: true } : newToDo
     );
     setToDos(newToDos);
+  };
+
+  const clickDelete = (delId) => {
+    setToDos(todos.filter((delToDo) => delToDo.id !== delId));
   };
 
   return (
@@ -62,7 +68,7 @@ function ToDoContainer() {
       </form>
       <ToDoWrapper>
         <ToDo todos={todos} onClick={clickComplete}></ToDo>
-        <Done todos={todos}></Done>
+        <Done todos={todos} onClick={clickDelete}></Done>
       </ToDoWrapper>
     </Wrapper>
   );
