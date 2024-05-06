@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 const DoneTitle = styled.strong`
+  display: inline-block;
+  margin-bottom: 25px;
   border-bottom: 2px solid #d7dcde;
 `;
 

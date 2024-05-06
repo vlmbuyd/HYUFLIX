@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 const ToDoTitle = styled.strong`
+  display: inline-block;
+  margin-bottom: 25px;
   border-bottom: 2px solid #d7dcde;
 `;
 
@@ -10,20 +12,22 @@ const Ul = styled.ul`
 `;
 
 const Li = styled.li`
-  margin-bottom: 8px;
+  margin-bottom: 15px;
   border-bottom: 2px solid #d7dcde;
 `;
 
-function ToDo({ todos }) {
+function ToDo({ todos, onClick }) {
   return (
     <div>
       <ToDoTitle>해야 할 일</ToDoTitle>
       <Ul>
-        {todos.map((todo, index) => (
-          <Li key={index}>
-            {todo} <span>완료</span>
-          </Li>
-        ))}
+        {todos.map((todo, index) =>
+          todo.isDone === false ? (
+            <Li key={index}>
+              {todo.content} <button onClick={onClick}>완료</button>
+            </Li>
+          ) : null
+        )}
       </Ul>
     </div>
   );
