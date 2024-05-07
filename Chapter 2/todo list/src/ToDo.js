@@ -1,8 +1,15 @@
 import styled from "styled-components";
 
+const Container = styled.div`
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
 const ToDoTitle = styled.strong`
   display: inline-block;
-  margin-bottom: 25px;
+  margin-bottom: 30px;
   border-bottom: 2px solid #d7dcde;
 `;
 
@@ -19,7 +26,7 @@ const Li = styled.li`
 function ToDo({ todos, onClick }) {
   const handleClick = (index) => onClick(index);
   return (
-    <div>
+    <Container>
       <ToDoTitle>해야 할 일</ToDoTitle>
       <Ul>
         {todos &&
@@ -32,7 +39,7 @@ function ToDo({ todos, onClick }) {
             ) : null
           )}
       </Ul>
-    </div>
+    </Container>
   );
 }
 

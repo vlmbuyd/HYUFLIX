@@ -1,8 +1,15 @@
 import styled from "styled-components";
 
+const Container = styled.div`
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
 const DoneTitle = styled.strong`
   display: inline-block;
-  margin-bottom: 25px;
+  margin-bottom: 30px;
   border-bottom: 2px solid #d7dcde;
 `;
 
@@ -19,7 +26,7 @@ const Li = styled.li`
 function Done({ todos, onClick }) {
   const handleClick = (id) => onClick(id);
   return (
-    <div>
+    <Container>
       <DoneTitle>해낸 일</DoneTitle>
       <Ul>
         {todos.map((todo, index) =>
@@ -31,7 +38,7 @@ function Done({ todos, onClick }) {
           ) : null
         )}
       </Ul>
-    </div>
+    </Container>
   );
 }
 
