@@ -19,14 +19,19 @@ const Ul = styled.ul`
 `;
 
 const Li = styled.li`
+  position: relative;
   width: 250px;
   padding: 5px 0 10px 0;
   margin-bottom: 15px;
   border-bottom: 2px solid #d7dcde;
+  font-size: 17px;
 `;
 
 const Button = styled.button`
-  padding: 4px 3px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 5px 4px;
   border: none;
   background-color: #d3dbed;
   font-weight: 500;

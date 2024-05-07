@@ -19,8 +19,22 @@ const Ul = styled.ul`
 `;
 
 const Li = styled.li`
+  position: relative;
+  width: 250px;
+  padding: 5px 0 10px 0;
   margin-bottom: 15px;
   border-bottom: 2px solid #d7dcde;
+  font-size: 17px;
+`;
+
+const Button = styled.button`
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 5px 4px;
+  border: none;
+  background-color: #d3dbed;
+  font-weight: 500;
 `;
 
 function Done({ todos, onClick }) {
@@ -33,7 +47,7 @@ function Done({ todos, onClick }) {
           todo.isDone === true ? (
             <Li key={index}>
               {todo.content}{" "}
-              <button onClick={() => handleClick(todo.id)}>삭제</button>
+              <Button onClick={() => handleClick(todo.id)}>삭제</Button>
             </Li>
           ) : null
         )}
