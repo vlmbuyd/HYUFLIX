@@ -19,8 +19,17 @@ const Ul = styled.ul`
 `;
 
 const Li = styled.li`
+  width: 250px;
+  padding: 5px 0 10px 0;
   margin-bottom: 15px;
   border-bottom: 2px solid #d7dcde;
+`;
+
+const Button = styled.button`
+  padding: 4px 3px;
+  border: none;
+  background-color: #d3dbed;
+  font-weight: 500;
 `;
 
 function ToDo({ todos, onClick }) {
@@ -34,7 +43,7 @@ function ToDo({ todos, onClick }) {
             todo.isDone === false ? (
               <Li key={index}>
                 {todo.content}
-                <button onClick={() => handleClick(index)}>완료</button>
+                <Button onClick={() => handleClick(index)}>완료</Button>
               </Li>
             ) : null
           )}
