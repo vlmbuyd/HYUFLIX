@@ -7,6 +7,21 @@ const Image = styled.img`
   object-position: center; */
 `;
 
+const Description = styled.div`
+  display: none;
+  padding: 20px 13px 0 13px;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 470px;
+  background-color: black;
+  opacity: 0.8;
+
+  & p {
+    font-size: 15px;
+  }
+`;
+
 const ItemContainer = styled.div`
   position: relative;
   width: 270px;
@@ -17,6 +32,13 @@ const ItemContainer = styled.div`
   margin: 10px 0;
   color: white;
   background-color: #3e469e;
+
+  &:hover ${Description} {
+    display: block;
+    /* opacity: 0.1;
+    filter: brightness(0.5); */
+    /* background-color: rgba(0, 0, 0, 0.2); */
+  }
 `;
 
 const Title = styled.span`
@@ -42,6 +64,10 @@ function MovieListItem({ item }) {
         <Title>{item.original_title}</Title>
         <Rate>{item.vote_average}</Rate>
       </div>
+      <Description>
+        <span>{item.original_title}</span>
+        <p>{item.overview}</p>
+      </Description>
     </ItemContainer>
   );
 }

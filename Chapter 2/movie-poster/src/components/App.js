@@ -23,7 +23,6 @@ const Container = styled.div`
 function App() {
   const mock = mockData.results;
 
-  console.log(mock);
   return (
     <Container>
       <GlobalStyle></GlobalStyle>
