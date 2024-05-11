@@ -1,4 +1,4 @@
-export const Movies = {
+export const mockData = {
   dates: {
     maximum: "2023-09-17",
     minimum: "2023-07-31",
