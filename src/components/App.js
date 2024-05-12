@@ -1,10 +1,17 @@
-import getData from "../api/api";
+import { Outlet } from "react-router-dom";
+import Nav from "./Nav";
+import Footer from "./Footer";
 
 function App() {
-  const { data } = getData();
-  console.log(data);
-
-  return <div>hi</div>;
+  return (
+    <>
+      <Nav />
+      <div>
+        <Outlet></Outlet>
+      </div>
+      <Footer />
+    </>
+  );
 }
 
 export default App;
