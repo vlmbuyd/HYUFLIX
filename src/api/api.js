@@ -9,20 +9,57 @@ const options = {
   },
 };
 
-export default async function getPopular() {
-  const response = await fetch(
-    `https://api.themoviedb.org/3/movie/popular?language=en-US&page=1?api_key=${key}`,
-    options
-  );
+const popular = {
+  name: "popular",
+  url: "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1?",
+};
+
+const nowPlaying = {
+  name: "nowplaying",
+  url: "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1?",
+};
+
+const topRated = {
+  name: "toprated",
+  url: "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1?",
+};
+
+const upComing = {
+  name: "upcoming",
+  url: "https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1?",
+};
+
+function getIndex(index) {
+  const result =
+    index === popular.name
+      ? popular.url
+      : index === nowPlaying.name
+      ? nowPlaying.url
+      : index === topRated.name
+      ? topRated.url
+      : index === upComing.name
+      ? upComing.url
+      : undefined;
+  return result;
+}
+
+export default async function getAPI(index) {
+  const response = await fetch(`${getIndex(index)}api_key=${key}`, options);
   const data = response.json();
   return data;
 }
 
-export async function getNowPlaying() {
-  const response = await fetch(
-    `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1?api_key=${key}`,
-    options
-  );
-  const data = response.json();
-  return data;
-}
+// export default async function getAPI(index) {
+//   const response = await fetch(
+//     `${
+//       index === popular.name
+//         ? popular.url
+//         : index === nowPlaying.name
+//         ? nowPlaying.url
+//         : undefined
+//     }api_key=${key}`,
+//     options
+//   );
+//   const data = response.json();
+//   return data;
+// }
