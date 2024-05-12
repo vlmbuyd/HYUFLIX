@@ -9,6 +9,7 @@ function NowPlayingPage() {
     const nowplaying = "nowplaying";
     const nowPlaying = await getAPI(nowplaying);
     const data = nowPlaying.results;
+    console.log(data);
     setItems(data);
   };
 

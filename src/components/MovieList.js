@@ -1,9 +1,19 @@
+import styled from "styled-components";
 import MovieListItem from "./MovieListItem";
+
+const Ul = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  list-style: none;
+  padding-left: 0;
+  background-color: #1f2047;
+`;
 
 function MovieList({ items }) {
   return (
     <>
-      <ul>
+      <Ul>
         {items.map((item) => {
           return (
             <li key={item.id}>
@@ -11,7 +21,7 @@ function MovieList({ items }) {
             </li>
           );
         })}
-      </ul>
+      </Ul>
     </>
   );
 }
