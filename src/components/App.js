@@ -4,7 +4,7 @@ function App() {
   const { data } = getData();
   console.log(data);
 
-  return;
+  return <div>hi</div>;
 }
 
 export default App;
