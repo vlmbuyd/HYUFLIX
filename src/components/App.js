@@ -9,6 +9,7 @@ const Container = styled.div`
   height: 100vh;
   margin: 0 auto;
   background-color: #1f2047;
+  /* background-color: #292a54; */
 `;
 
 function App() {

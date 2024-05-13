@@ -8,6 +8,7 @@ const Ul = styled.ul`
   list-style: none;
   padding-left: 0;
   background-color: #1f2047;
+  /* background-color: #292a54; */
 `;
 
 function MovieList({ items }) {

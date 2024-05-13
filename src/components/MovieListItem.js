@@ -16,7 +16,7 @@ const ItemContainer = styled.div`
   border-radius: 9px;
   margin: 10px 0;
   color: white;
-  background-color: #3e469e;
+  background-color: #3c386b;
 `;
 
 const Title = styled.span`

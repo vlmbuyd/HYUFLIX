@@ -26,6 +26,7 @@ const Ul = styled.ul`
 `;
 
 const TitleNavLink = styled(NavLink)`
+  margin-top: 20px;
   font-size: 20px;
   color: white;
   font-weight: 400;
@@ -48,12 +49,15 @@ function Nav() {
   return (
     <NavContainer>
       <h1>
-        <TitleNavLink to="/">UMC Movie</TitleNavLink>
+        <TitleNavLink to="popular">UMC Movie</TitleNavLink>
       </h1>
 
       <Ul>
         <li>
-          <LiNavLink to="/">회원가입</LiNavLink>
+          <LiNavLink to="login">로그인</LiNavLink>
+        </li>
+        <li>
+          <LiNavLink to="join">회원가입</LiNavLink>
         </li>
         <li>
           <LiNavLink to="popular">Popular</LiNavLink>
