@@ -40,8 +40,9 @@ const SearchIcon = styled.img`
   position: absolute;
   right: -40px;
   width: 20px;
-  height: auto;
-  border-radius: 50%;
+  height: 20px;
+  border-radius: 3px;
+  /* border-radius: 50%; */
   background-color: #fcba03;
   transform: translateY(50%);
 `;
