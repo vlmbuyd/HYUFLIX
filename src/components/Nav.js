@@ -19,8 +19,9 @@ const Ul = styled.ul`
 `;
 
 const TitleNavLink = styled(NavLink)`
-  margin-top: 20px;
-  font-size: 20px;
+  display: inline-block;
+  margin: 12px;
+  font-size: 22px;
   color: white;
   font-weight: 400;
 `;
