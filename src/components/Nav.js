@@ -30,13 +30,18 @@ const LiNavLink = styled(NavLink)`
   color: white;
 
   &:hover {
+    font-size: 14px;
     font-weight: 700;
   }
-
-  &:active {
-    color: yellow;
-  }
 `;
+
+function handleActive({ isActive }) {
+  return {
+    color: isActive ? "#e8af10" : "white",
+    fontSize: isActive ? "14px" : "13px",
+    fontWeight: isActive ? "700" : "400",
+  };
+}
 
 function Nav() {
   return (
@@ -47,22 +52,34 @@ function Nav() {
 
       <Ul>
         <li>
-          <LiNavLink to="login">로그인</LiNavLink>
+          <LiNavLink style={handleActive} to="login">
+            로그인
+          </LiNavLink>
         </li>
         <li>
-          <LiNavLink to="join">회원가입</LiNavLink>
+          <LiNavLink style={handleActive} to="join">
+            회원가입
+          </LiNavLink>
         </li>
         <li>
-          <LiNavLink to="popular">Popular</LiNavLink>
+          <LiNavLink style={handleActive} to="popular">
+            Popular
+          </LiNavLink>
         </li>
         <li>
-          <LiNavLink to="now-playing">Now Playing</LiNavLink>
+          <LiNavLink style={handleActive} to="now-playing">
+            Now Playing
+          </LiNavLink>
         </li>
         <li>
-          <LiNavLink to="top-rated">Top Rated</LiNavLink>
+          <LiNavLink style={handleActive} to="top-rated">
+            Top Rated
+          </LiNavLink>
         </li>
         <li>
-          <LiNavLink to="upcoming">Upcoming</LiNavLink>
+          <LiNavLink style={handleActive} to="upcoming">
+            Upcoming
+          </LiNavLink>
         </li>
       </Ul>
     </NavContainer>
