@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import searchIcon from "../assets/search.png";
 
 const Welcome = styled.h1`
   display: flex;
@@ -24,8 +25,25 @@ const Title = styled.h2`
   color: white;
 `;
 
-const SearchContainer = styled.div``;
-const Search = styled.input``;
+const SearchContainer = styled.div`
+  position: relative;
+`;
+
+const Search = styled.input`
+  width: 300px;
+  height: 35px;
+  border-radius: 50px;
+`;
+
+const SearchIcon = styled.img`
+  position: absolute;
+  right: -40px;
+  width: 20px;
+  height: auto;
+  border-radius: 50%;
+  background-color: #fcba03;
+  transform: translateY(50%);
+`;
 
 function MainPage() {
   return (
@@ -35,6 +53,7 @@ function MainPage() {
         <Title>🎬Find your movies!</Title>
         <SearchContainer>
           <Search />
+          <SearchIcon src={searchIcon} />
         </SearchContainer>
       </Main>
     </>

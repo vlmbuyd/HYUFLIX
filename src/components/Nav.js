@@ -4,24 +4,17 @@ import styled from "styled-components";
 const NavContainer = styled.div`
   height: 60px;
   background-color: #0e0f36;
-
-  & ul {
-    display: flex;
-    list-style: none;
-    padding-left: 0;
-  }
 `;
 
 const Ul = styled.ul`
   height: 60px;
   display: flex;
-  justify-content: space-around;
   position: absolute;
   top: 20px;
   right: 5px;
 
   & li {
-    margin-right: 10px;
+    margin-right: 15px;
   }
 `;
 
