@@ -38,7 +38,6 @@ const LiNavLink = styled(NavLink)`
 function handleActive({ isActive }) {
   return {
     color: isActive ? "#e8af10" : "white",
-    fontSize: isActive ? "14px" : "13px",
     fontWeight: isActive ? "700" : "400",
   };
 }

@@ -29,9 +29,10 @@ const SearchContainer = styled.div`
   position: relative;
 `;
 
-const Search = styled.input`
+const SearchInput = styled.input`
   width: 300px;
   height: 35px;
+  border: none;
   border-radius: 50px;
 `;
 
@@ -52,7 +53,7 @@ function MainPage() {
       <Main>
         <Title>🎬Find your movies!</Title>
         <SearchContainer>
-          <Search />
+          <SearchInput />
           <SearchIcon src={searchIcon} />
         </SearchContainer>
       </Main>

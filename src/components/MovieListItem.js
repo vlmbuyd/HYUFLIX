@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import starIcon from "../assets/star.png";
 
 const Image = styled.img`
   height: 380px;
@@ -19,15 +20,33 @@ const ItemContainer = styled.div`
   background-color: #3c386b;
 `;
 
-const Title = styled.span`
-  margin-left: 7px;
-  font-weight: 300;
+const Description = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+`;
+
+const Title = styled.strong`
+  /* margin-left: 7px; */
+  width: 70%;
+  font-size: 16px;
+  font-weight: 400;
+`;
+
+const RateContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`;
+
+const RatingIcon = styled.img`
+  width: 16px;
+  height: 16px;
+  margin-right: 7px;
 `;
 
 const Rate = styled.span`
-  position: absolute;
-  top: 390px;
-  right: 10px;
+  display: inline-block;
+  font-size: 15px;
   font-weight: 300;
 `;
 
@@ -38,13 +57,14 @@ function MovieListItem({ item }) {
         src={`https://image.tmdb.org/t/p/w500${item.backdrop_path}`}
         alt={item.original_title}
       ></Image>
-      <div>
+
+      <Description>
         <Title>{item.original_title}</Title>
-        <div>
-          <span>⭐</span>
+        <RateContainer>
+          <RatingIcon src={starIcon}></RatingIcon>
           <Rate>{item.vote_average}</Rate>
-        </div>
-      </div>
+        </RateContainer>
+      </Description>
     </ItemContainer>
   );
 }
