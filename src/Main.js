@@ -28,17 +28,26 @@ function Main() {
 
           <Route path="now-playing">
             <Route index element={<NowPlayingPage />} />
-            <Route path="moive/:title" element={<NowPlayingPage />} />
+            <Route
+              path="movie/:title"
+              element={<MovieDetail index="nowplaying" />}
+            />
           </Route>
 
           <Route path="top-rated">
             <Route index element={<TopRatedPage />} />
-            <Route path="movie/:title" element={<TopRatedPage />} />
+            <Route
+              path="movie/:title"
+              element={<MovieDetail index="toprated" />}
+            />
           </Route>
 
           <Route path="upcoming">
             <Route index element={<UpComing />} />
-            <Route path="movie/:title" element={<UpComing />} />
+            <Route
+              path="movie/:title"
+              element={<MovieDetail index="upcoming" />}
+            />
           </Route>
         </Route>
       </Routes>
