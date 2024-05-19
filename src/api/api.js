@@ -48,12 +48,3 @@ export default async function getAPI(index) {
   const data = response.json();
   return data;
 }
-
-export async function getDetail(index, title) {
-  const response = await fetch(
-    `${getIndex(index)}api_key=${key}/${title}`,
-    options
-  );
-  const data = response.json();
-  return data;
-}

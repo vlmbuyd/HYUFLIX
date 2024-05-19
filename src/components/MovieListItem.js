@@ -56,7 +56,7 @@ function MovieListItem({ item }) {
       <Image
         src={`https://image.tmdb.org/t/p/w500${item.backdrop_path}`}
         alt={item.original_title}
-      ></Image>
+      />
 
       <Description>
         <Title>{item.original_title}</Title>
