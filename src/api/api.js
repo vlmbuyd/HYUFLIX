@@ -49,17 +49,11 @@ export default async function getAPI(index) {
   return data;
 }
 
-// export default async function getAPI(index) {
-//   const response = await fetch(
-//     `${
-//       index === popular.name
-//         ? popular.url
-//         : index === nowPlaying.name
-//         ? nowPlaying.url
-//         : undefined
-//     }api_key=${key}`,
-//     options
-//   );
-//   const data = response.json();
-//   return data;
-// }
+export async function getDetail(index, title) {
+  const response = await fetch(
+    `${getIndex(index)}api_key=${key}/${title}`,
+    options
+  );
+  const data = response.json();
+  return data;
+}

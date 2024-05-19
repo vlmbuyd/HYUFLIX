@@ -7,6 +7,7 @@ import TopRatedPage from "./pages/TopRatedPage";
 import UpComing from "./pages/UpComing";
 import LoginPage from "./pages/LoginPage";
 import JoinPage from "./pages/JoinPage";
+import MovieDetail from "./components/MovieDetail";
 
 function Main() {
   return (
@@ -16,10 +17,29 @@ function Main() {
           <Route index element={<MainPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/join" element={<JoinPage />} />
-          <Route path="/popular" element={<PopularPage />} />
-          <Route path="/now-playing" element={<NowPlayingPage />} />
-          <Route path="/top-rated" element={<TopRatedPage />} />
-          <Route path="/upcoming" element={<UpComing />} />
+
+          <Route path="popular">
+            <Route index element={<PopularPage />} />
+            <Route
+              path="movie/:title"
+              element={<MovieDetail index="popular" />}
+            />
+          </Route>
+
+          <Route path="now-playing">
+            <Route index element={<NowPlayingPage />} />
+            <Route path="moive/:title" element={<NowPlayingPage />} />
+          </Route>
+
+          <Route path="top-rated">
+            <Route index element={<TopRatedPage />} />
+            <Route path="movie/:title" element={<TopRatedPage />} />
+          </Route>
+
+          <Route path="upcoming">
+            <Route index element={<UpComing />} />
+            <Route path="movie/:title" element={<UpComing />} />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>
