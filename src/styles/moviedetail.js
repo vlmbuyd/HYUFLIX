@@ -26,17 +26,17 @@ const Container = styled.div`
   }
 
   & .title {
-    font-size: 25px;
+    font-size: 30px;
   }
 
   & .rating,
   .release-date,
   .plot-title {
-    font-size: 15px;
+    font-size: 17px;
   }
 
   & .plot {
-    font-size: 13px;
+    font-size: 15px;
     line-height: 1.5em;
   }
 `;

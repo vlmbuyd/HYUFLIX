@@ -26,12 +26,12 @@ function MovieDetail({ index }) {
   return (
     <Styled.Container>
       <Styled.BackgroundImg
-        src={`https://image.tmdb.org/t/p/w500${item.backdrop_path}`}
+        src={`https://image.tmdb.org/t/p/original${item.backdrop_path}`}
         alt={item.original_title}
       />
       <img
         className="movie-img"
-        src={`https://image.tmdb.org/t/p/w500${item.backdrop_path}`}
+        src={`https://image.tmdb.org/t/p/original${item.backdrop_path}`}
         alt={item.original_title}
       />
       <div className="description">
@@ -39,7 +39,11 @@ function MovieDetail({ index }) {
         <strong className="rating">평점 {item.vote_average}</strong>
         <strong className="release-date">개봉일 {item.release_date}</strong>
         <strong className="plot-title">줄거리</strong>
-        <p className="plot">{item.overview}</p>
+        <p className="plot">
+          {item.overview === null || item.overview === undefined
+            ? "TMDB에서 제공하는 API에 상세 줄거리 정보가 없습니다."
+            : item.overview}
+        </p>
       </div>
     </Styled.Container>
   );
