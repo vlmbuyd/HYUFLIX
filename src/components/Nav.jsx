@@ -8,7 +8,6 @@ const NavContainer = styled.div`
 `;
 
 const Ul = styled.ul`
-  height: 60px;
   display: flex;
   position: absolute;
   top: 20px;
