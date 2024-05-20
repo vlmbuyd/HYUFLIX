@@ -45,9 +45,6 @@ function handleActive({ isActive }) {
 }
 
 function Nav() {
-  const [login, setLogin] = useState(false);
-
-  const handleLogin = () => setLogin(!login);
   return (
     <NavContainer>
       <h1>
@@ -56,12 +53,7 @@ function Nav() {
 
       <Ul>
         <li>
-          <LiNavLink onClick={handleLogin} style={handleActive} to="login">
-            {login ? "로그아웃" : "로그인"}
-          </LiNavLink>
-        </li>
-        <li>
-          <LiNavLink style={handleActive} to="join">
+          <LiNavLink style={handleActive} to="signup">
             회원가입
           </LiNavLink>
         </li>

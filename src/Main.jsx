@@ -5,8 +5,7 @@ import PopularPage from "./pages/PopularPage";
 import NowPlayingPage from "./pages/NowPlayingPage";
 import TopRatedPage from "./pages/TopRatedPage";
 import UpComing from "./pages/UpComing";
-import LoginPage from "./pages/LoginPage";
-import JoinPage from "./pages/JoinPage";
+import SignUpPage from "./pages/SignUpPage";
 import MovieDetail from "./components/MovieDetail";
 import NotFoundPage from "./pages/NotFoundPage";
 
@@ -16,8 +15,7 @@ function Main() {
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<MainPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/join" element={<JoinPage />} />
+          <Route path="/signup" element={<SignUpPage />} />
 
           <Route path="popular">
             <Route index element={<PopularPage />} />
