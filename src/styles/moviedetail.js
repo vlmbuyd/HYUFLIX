@@ -18,10 +18,10 @@ const Container = styled.div`
     justify-content: space-around;
     align-items: flex-start;
     position: absolute;
-    top: 20%;
+    top: 15%;
     left: 40%;
     width: 500px;
-    height: 300px;
+    height: 400px;
     color: white;
   }
 
@@ -33,6 +33,11 @@ const Container = styled.div`
   .release-date,
   .plot-title {
     font-size: 17px;
+  }
+
+  & .rating {
+    display: inline-block;
+    margin-right: 10px;
   }
 
   & .plot {
@@ -48,4 +53,20 @@ const BackgroundImg = styled.img`
   opacity: 0.2;
 `;
 
-export default { Container, BackgroundImg };
+const RatingContainer = styled.div`
+  display: flex;
+`;
+
+const IconContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+
+  & img {
+    width: 16px;
+    height: 16px;
+  }
+`;
+
+const RatingIcon = styled.img``;
+
+export default { Container, BackgroundImg, RatingContainer, IconContainer };
