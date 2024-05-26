@@ -4,14 +4,16 @@ import Container from "../styles/signup";
 function SignUpPage() {
   const [inputValue, setInputValue] = useState({
     username: "",
-    usernameValid: false,
     email: "",
-    emailValid: false,
     age: "",
-    ageValid: false,
     pw: "",
-    pwValid: false,
     checkpw: "",
+  });
+  const [inputValid, setInputValid] = useState({
+    usernameValid: false,
+    emailValid: false,
+    ageValid: false,
+    pwValid: false,
   });
 
   const handleInput = (e) => {
@@ -23,15 +25,15 @@ function SignUpPage() {
     switch (name) {
       case "username":
         inputValue.username === ""
-          ? setInputValue((prev) => ({ ...prev, usernameValid: false }))
-          : setInputValue((prev) => ({ ...prev, usernameValid: true }));
+          ? setInputValid((prev) => ({ ...prev, usernameValid: false }))
+          : setInputValid((prev) => ({ ...prev, usernameValid: true }));
         break;
     }
   };
 
-  useEffect(() => {
-    handleInput();
-  }, [inputValue]);
+  // useEffect(() => {
+  //   handleInput();
+  // }, [inputValue]);
 
   return (
     <Container>
@@ -39,11 +41,12 @@ function SignUpPage() {
       <form action="#" method="GET">
         <input
           name="username"
+          value={inputValue.username}
           onChange={handleInput}
           className="username"
           placeholder="이름을 입력해주세요"
         />
-        {inputValue.usernameValid ? null : <span>이름을 입력해주세요!</span>}
+        {inputValid.usernameValid ? null : <span>이름을 입력해주세요!</span>}
 
         <input
           name="email"

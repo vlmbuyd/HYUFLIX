@@ -26,6 +26,7 @@ function MovieDetail({ index }) {
   const handleDetail = async () => {
     const detailData = await getAPI(index);
     const data = detailData.results;
+    console.log(data);
     const detail = getDetail(data, title);
     setItem(detail);
 
