@@ -16,24 +16,13 @@ const Container = styled.div`
   & form {
     display: flex;
     flex-direction: column;
-  }
-
-  & .username-container,
-  .email-container,
-  .age-container,
-  .pw-container,
-  .pwcheck-container {
-    display: flex;
-    flex-direction: column;
-    height: 60px;
-    margin-bottom: 10px;
+    align-items: center;
   }
 
   & input {
     width: 500px;
     height: 40px;
     padding-left: 15px;
-    margin-bottom: 8px;
     border-radius: 20px;
   }
 
@@ -41,40 +30,21 @@ const Container = styled.div`
     font-size: 11px;
   }
 
-  & .error-message {
-    margin-left: 8px;
-    font-size: 11px;
-    color: #a12110;
+  & .id-input {
+    margin-bottom: 12px;
+  }
+
+  & .pw-input {
+    margin-bottom: 45px;
   }
 
   & button {
     margin: 0 auto 40px auto;
     width: 450px;
     height: 40px;
+    background-color: white;
     border-radius: 20px;
     font-weight: 600;
-  }
-
-  & .enabled {
-    background-color: #e6b71e;
-    color: black;
-  }
-
-  & .disabled {
-    background-color: white;
-    color: black;
-  }
-
-  & .login-redirect {
-    display: flex;
-    justify-content: space-around;
-    width: 300px;
-
-    & span,
-    a {
-      font-size: 11px;
-      cursor: pointer;
-    }
   }
 `;
 

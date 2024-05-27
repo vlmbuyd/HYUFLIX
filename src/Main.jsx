@@ -17,6 +17,7 @@ function Main() {
         <Route path="/" element={<App />}>
           <Route index element={<MainPage />} />
           <Route path="/signup" element={<SignUpPage />} />
+          <Route path="login" element={<LoginPage />} />
 
           <Route path="popular">
             <Route index element={<PopularPage />} />
@@ -50,7 +51,6 @@ function Main() {
             />
           </Route>
 
-          <Route path="login" element={<LoginPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
