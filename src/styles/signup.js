@@ -22,7 +22,7 @@ const Container = styled.div`
   .email-container,
   .age-container,
   .pw-container,
-  .checkpw-container {
+  .pwcheck-container {
     display: flex;
     flex-direction: column;
     height: 60px;

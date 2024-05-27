@@ -14,18 +14,21 @@ function SignUpPage() {
     emailValid: false,
     ageValid: false,
     pwValid: false,
+    pwCheckValid: false,
   });
   const [errorMessage, setErrorMessage] = useState({
     usernameMsg: "",
     emailMsg: "",
     ageMsg: "",
+    pwMsg: "",
   });
 
   const submitRequirements =
     inputValid.usernameValid &&
     inputValid.emailValid &&
     inputValid.ageValid &&
-    inputValid.pwValid;
+    inputValid.pwValid &&
+    inputValid.pwCheckValid;
 
   const handleInput = (e) => {
     const { name, value } = e.target;
@@ -33,9 +36,10 @@ function SignUpPage() {
 
     switch (name) {
       case "username":
+        let isNameValid = value.trim().length > 0 && typeof value === "string";
         setInputValid((prev) => ({
           ...prev,
-          usernameValid: value.trim().length > 0 && typeof value === "string",
+          usernameValid: isNameValid,
         }));
         setErrorMessage((prev) => ({
           ...prev,
@@ -44,13 +48,15 @@ function SignUpPage() {
         break;
 
       case "email":
+        let isEmailValid =
+          typeof value === "string" &&
+          value.trim().length > 0 &&
+          value.includes("@");
         setInputValid((prev) => ({
           ...prev,
-          emailValid:
-            typeof value === "string" &&
-            value.trim().length > 0 &&
-            value.includes("@"),
+          emailValid: isEmailValid,
         }));
+
         value.trim().length > 0 && !value.includes("@")
           ? setErrorMessage((prev) => ({
               ...prev,
@@ -63,13 +69,14 @@ function SignUpPage() {
         break;
 
       case "age":
+        let isAgeValid =
+          !isNaN(value) && // 숫자 입력
+          Number(value) >= 19 && // 음수 X, 19세 이상
+          Number.isInteger(parseFloat(value)) && // 소수 X
+          value.trim().length > 0;
         setInputValid((prev) => ({
           ...prev,
-          ageValid:
-            !isNaN(value) && // 숫자 입력
-            Number(value) >= 19 && // 음수 X, 19세 이상
-            Number.isInteger(parseFloat(value)) && // 소수 X
-            value.trim().length > 0, // 입력O
+          ageValid: isAgeValid, // 입력O
         }));
 
         if (value.trim().length > 0) {
@@ -101,10 +108,48 @@ function SignUpPage() {
           }));
         }
         break;
+
+      case "pw":
+        const regexPw =
+          /^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])[a-z0-9#?!@$%^&*-]+$/;
+
+        let isPwValid =
+          regexPw.test(value) &&
+          value.trim().length >= 4 &&
+          value.trim().length <= 12;
+        setInputValid((prev) => ({
+          ...prev,
+          pwValid: isPwValid,
+        }));
+
+        if (value.trim().length > 0) {
+          if (value.trim().length < 4) {
+            setErrorMessage((prev) => ({
+              ...prev,
+              pwMsg: "최소 4자리 이상 입력해주세요!",
+            }));
+          } else if (!regexPw.test(value)) {
+            setErrorMessage((prev) => ({
+              ...prev,
+              pwMsg: "비밀번호는 영어, 숫자, 특수문자를 포함해주세요!",
+            }));
+          } else if (value.trim().length > 12) {
+            setErrorMessage((prev) => ({
+              ...prev,
+              pwMsg: "최대 12자리까지 입력 가능합니다!",
+            }));
+          }
+        } else {
+          setErrorMessage((prev) => ({
+            ...prev,
+            pwMsg: "비밀번호를 입력해주세요!",
+          }));
+        }
+        break;
     }
 
     // console.log(inputValue);
-    // console.log(inputValid);
+    console.log(inputValid);
     // console.log(errorMessage);
   };
 
@@ -121,7 +166,6 @@ function SignUpPage() {
             name="username"
             value={inputValue.username}
             onChange={handleInput}
-            className="username"
             placeholder="이름을 입력해주세요"
           />
           {inputValid.usernameValid ? null : (
@@ -133,7 +177,6 @@ function SignUpPage() {
           <input
             name="email"
             onChange={handleInput}
-            className="email"
             placeholder="이메일을 입력해주세요"
           />
           {inputValid.emailValid ? null : (
@@ -145,7 +188,6 @@ function SignUpPage() {
           <input
             onChange={handleInput}
             name="age"
-            className="age"
             placeholder="나이를 입력해주세요"
           />
           {inputValid.ageValid ? null : (
@@ -157,16 +199,17 @@ function SignUpPage() {
           <input
             name="pw"
             onChange={handleInput}
-            className="pw"
             placeholder="비밀번호를 입력해주세요"
           ></input>
+          {inputValid.pwValid ? null : (
+            <span className="error-message">{errorMessage.pwMsg}</span>
+          )}
         </div>
 
-        <div className="checkpw-container">
+        <div className="pwcheck-container">
           <input
-            name="pw"
+            name="pw-check"
             onChange={handleInput}
-            className="pw"
             placeholder="비밀번호를 입력해주세요"
           ></input>
         </div>
