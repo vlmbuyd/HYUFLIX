@@ -18,7 +18,7 @@ function SignUpPage() {
   const [errorMessage, setErrorMessage] = useState({
     usernameMsg: "",
     emailMsg: "",
-    emailRegex: "",
+    ageMsg: "",
   });
 
   const submitRequirements =
@@ -47,8 +47,8 @@ function SignUpPage() {
         setInputValid((prev) => ({
           ...prev,
           emailValid:
-            value.trim().length > 0 &&
             typeof value === "string" &&
+            value.trim().length > 0 &&
             value.includes("@"),
         }));
         value.trim().length > 0 && !value.includes("@")
@@ -61,10 +61,45 @@ function SignUpPage() {
               emailMsg: "이메일을 입력해주세요!",
             }));
         break;
+
+      case "age":
+        setInputValid((prev) => ({
+          ...prev,
+          ageValid:
+            !isNaN(value) && // 숫자 입력
+            Number(value) >= 19 && // 음수 X, 19세 이상
+            Number.isInteger(Number(value)) && // 소수 X
+            value.trim().length > 0, // 입력O
+        }));
+
+        if (value.trim().length > 0) {
+          if (isNaN(value)) {
+            setErrorMessage((prev) => ({
+              ...prev,
+              ageMsg: "나이는 숫자로 입력해주세요!",
+            }));
+          } else if (Number(value) < 0) {
+            setErrorMessage((prev) => ({
+              ...prev,
+              ageMsg: "나이는 양수여야 합니다!",
+            }));
+          } else if (Number(value) < 19) {
+            setErrorMessage((prev) => ({
+              ...prev,
+              ageMsg: "19세 이상만 이용 가능합니다!",
+            }));
+          }
+        } else {
+          setErrorMessage((prev) => ({
+            ...prev,
+            ageMsg: "나이를 입력해주세요!",
+          }));
+        }
+        break;
     }
 
     // console.log(inputValue);
-    console.log(inputValid);
+    // console.log(inputValid);
     // console.log(errorMessage);
   };
 
@@ -108,6 +143,9 @@ function SignUpPage() {
             className="age"
             placeholder="나이를 입력해주세요"
           />
+          {inputValid.ageValid ? null : (
+            <span className="error-message">{errorMessage.ageMsg}</span>
+          )}
         </div>
 
         <div className="pw-container">
