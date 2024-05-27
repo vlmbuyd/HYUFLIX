@@ -16,10 +16,6 @@ const Container = styled.div`
   & form {
     display: flex;
     flex-direction: column;
-
-    & span {
-      color: #a12110;
-    }
   }
 
   & input {
@@ -32,6 +28,10 @@ const Container = styled.div`
 
   & input::placeholder {
     font-size: 11px;
+  }
+
+  & .username-error-message {
+    color: #a12110;
   }
 
   & button {

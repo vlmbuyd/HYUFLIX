@@ -15,6 +15,7 @@ function SignUpPage() {
     ageValid: false,
     pwValid: false,
   });
+  const [errorMessage, setErrorMessage] = useState("");
 
   const submitRequirements =
     inputValid.usernameValid &&
@@ -26,15 +27,21 @@ function SignUpPage() {
     const { name, value } = e.target;
     setInputValue((prev) => ({ ...prev, [name]: value }));
 
-    console.log(inputValue.username);
-
     switch (name) {
       case "username":
-        inputValue.username === ""
-          ? setInputValid((prev) => ({ ...prev, usernameValid: false }))
-          : setInputValid((prev) => ({ ...prev, usernameValid: true }));
+        setInputValid((prev) => ({
+          ...prev,
+          usernameValid: value.trim().length > 0 && typeof value === "string",
+        }));
+        inputValid.username
+          ? setErrorMessage("")
+          : setErrorMessage("이름을 입력해주세요!");
         break;
     }
+
+    // console.log(inputValue);
+    console.log(inputValid);
+    // console.log(errorMessage);
   };
 
   // useEffect(() => {
@@ -52,7 +59,9 @@ function SignUpPage() {
           className="username"
           placeholder="이름을 입력해주세요"
         />
-        {inputValid.usernameValid ? null : <span>이름을 입력해주세요!</span>}
+        {inputValid.usernameValid ? null : (
+          <span className="username-error-message">{errorMessage}</span>
+        )}
 
         <input
           name="email"
