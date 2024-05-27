@@ -38,9 +38,19 @@ const Container = styled.div`
     margin: 0 auto 40px auto;
     width: 450px;
     height: 40px;
-    background-color: white;
+    /* background-color: white; */
     border-radius: 20px;
     font-weight: 600;
+  }
+
+  & .enabled {
+    background-color: #e6b71e;
+    color: black;
+  }
+
+  & .disabled {
+    background-color: white;
+    color: black;
   }
 
   & .login-redirect {

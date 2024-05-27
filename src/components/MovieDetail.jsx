@@ -49,7 +49,7 @@ function MovieDetail({ index }) {
         src={`https://image.tmdb.org/t/p/original${item.backdrop_path}`}
         alt={item.original_title}
       />
-      k
+
       <div className="description">
         <h1 className="title">{item.original_title}</h1>
         <Styled.RatingContainer>

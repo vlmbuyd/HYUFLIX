@@ -16,6 +16,12 @@ function SignUpPage() {
     pwValid: false,
   });
 
+  const submitRequirements =
+    inputValid.usernameValid &&
+    inputValid.emailValid &&
+    inputValid.ageValid &&
+    inputValid.pwValid;
+
   const handleInput = (e) => {
     const { name, value } = e.target;
     setInputValue((prev) => ({ ...prev, [name]: value }));
@@ -76,7 +82,13 @@ function SignUpPage() {
           placeholder="비밀번호 확인"
         />
 
-        <button type="submit">제출하기</button>
+        <button
+          disabled={!submitRequirements}
+          className={submitRequirements ? "enabled" : "disabled"}
+          type="submit"
+        >
+          제출하기
+        </button>
       </form>
       <div className="login-redirect">
         <span>이미 아이디가 있으신가요?</span>
