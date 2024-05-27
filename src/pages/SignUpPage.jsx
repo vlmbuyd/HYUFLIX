@@ -68,7 +68,7 @@ function SignUpPage() {
           ageValid:
             !isNaN(value) && // 숫자 입력
             Number(value) >= 19 && // 음수 X, 19세 이상
-            Number.isInteger(Number(value)) && // 소수 X
+            Number.isInteger(parseFloat(value)) && // 소수 X
             value.trim().length > 0, // 입력O
         }));
 
@@ -82,6 +82,11 @@ function SignUpPage() {
             setErrorMessage((prev) => ({
               ...prev,
               ageMsg: "나이는 양수여야 합니다!",
+            }));
+          } else if (!Number.isInteger(parseFloat(value))) {
+            setErrorMessage((prev) => ({
+              ...prev,
+              ageMsg: "나이를 소수로 입력할 수 없습니다!",
             }));
           } else if (Number(value) < 19) {
             setErrorMessage((prev) => ({
