@@ -18,19 +18,32 @@ const Container = styled.div`
     flex-direction: column;
   }
 
+  & .username-container,
+  .email-container,
+  .age-container,
+  .pw-container,
+  .checkpw-container {
+    display: flex;
+    flex-direction: column;
+    height: 60px;
+    margin-bottom: 10px;
+  }
+
   & input {
     width: 500px;
     height: 40px;
     padding-left: 15px;
+    margin-bottom: 8px;
     border-radius: 20px;
-    margin-bottom: 20px;
   }
 
   & input::placeholder {
     font-size: 11px;
   }
 
-  & .username-error-message {
+  & .error-message {
+    margin-left: 8px;
+    font-size: 11px;
     color: #a12110;
   }
 

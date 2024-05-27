@@ -76,51 +76,57 @@ function SignUpPage() {
     <Container>
       <h1>회원가입</h1>
       <form action="#" method="GET">
-        <input
-          name="username"
-          value={inputValue.username}
-          onChange={handleInput}
-          className="username"
-          placeholder="이름을 입력해주세요"
-        />
-        {inputValid.usernameValid ? null : (
-          <span className="username-error-message">
-            {errorMessage.usernameMsg}
-          </span>
-        )}
+        <div className="username-container">
+          <input
+            name="username"
+            value={inputValue.username}
+            onChange={handleInput}
+            className="username"
+            placeholder="이름을 입력해주세요"
+          />
+          {inputValid.usernameValid ? null : (
+            <span className="error-message">{errorMessage.usernameMsg}</span>
+          )}
+        </div>
 
-        <input
-          name="email"
-          onChange={handleInput}
-          className="email"
-          placeholder="이메일을 입력해주세요"
-        />
-        {inputValid.emailValid ? null : (
-          <span className="username-error-message">
-            {errorMessage.emailMsg}
-          </span>
-        )}
+        <div className="email-container">
+          <input
+            name="email"
+            onChange={handleInput}
+            className="email"
+            placeholder="이메일을 입력해주세요"
+          />
+          {inputValid.emailValid ? null : (
+            <span className="error-message">{errorMessage.emailMsg}</span>
+          )}
+        </div>
 
-        <input
-          onChange={handleInput}
-          name="age"
-          className="age"
-          placeholder="나이를 입력해주세요"
-        />
+        <div className="age-container">
+          <input
+            onChange={handleInput}
+            name="age"
+            className="age"
+            placeholder="나이를 입력해주세요"
+          />
+        </div>
 
-        <input
-          name="pw"
-          onChange={handleInput}
-          className="pw"
-          placeholder="비밀번호를 입력해주세요"
-        ></input>
+        <div className="pw-container">
+          <input
+            name="pw"
+            onChange={handleInput}
+            className="pw"
+            placeholder="비밀번호를 입력해주세요"
+          ></input>
+        </div>
 
-        <input
-          name="checkpw"
-          onChange={handleInput}
-          className="pw-check"
-          placeholder="비밀번호 확인"
-        />
+        <div className="checkpw-container">
+          <input
+            name="pw"
+            onChange={handleInput}
+            className="pw"
+            placeholder="비밀번호를 입력해주세요"
+          ></input>
+        </div>
 
         <button
           disabled={!submitRequirements}
