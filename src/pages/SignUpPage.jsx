@@ -21,6 +21,7 @@ function SignUpPage() {
     emailMsg: "",
     ageMsg: "",
     pwMsg: "",
+    pwCheckMsg: "",
   });
 
   const submitRequirements =
@@ -146,6 +147,25 @@ function SignUpPage() {
           }));
         }
         break;
+
+      case "pw-check":
+        let isPwCheckValid = value === inputValue.pw;
+        console.log(isPwCheckValid);
+        setInputValid((prev) => ({
+          ...prev,
+          pwCheckValid: isPwCheckValid,
+        }));
+
+        value.trim().length > 0 && !isPwCheckValid
+          ? setErrorMessage((prev) => ({
+              ...prev,
+              pwCheckMsg: "비밀번호가 일치하지 않습니다!",
+            }))
+          : setErrorMessage((prev) => ({
+              ...prev,
+              pwCheckMsg: "비밀번호를 다시 입력해주세요!",
+            }));
+        break;
     }
 
     // console.log(inputValue);
@@ -212,6 +232,9 @@ function SignUpPage() {
             onChange={handleInput}
             placeholder="비밀번호를 입력해주세요"
           ></input>
+          {inputValid.pwCheckValid ? null : (
+            <span className="error-message">{errorMessage.pwCheckMsg}</span>
+          )}
         </div>
 
         <button
