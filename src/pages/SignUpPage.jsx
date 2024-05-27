@@ -15,7 +15,11 @@ function SignUpPage() {
     ageValid: false,
     pwValid: false,
   });
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState({
+    usernameMsg: "",
+    emailMsg: "",
+    emailRegex: "",
+  });
 
   const submitRequirements =
     inputValid.usernameValid &&
@@ -33,10 +37,25 @@ function SignUpPage() {
           ...prev,
           usernameValid: value.trim().length > 0 && typeof value === "string",
         }));
-        inputValid.username
-          ? setErrorMessage("")
-          : setErrorMessage("이름을 입력해주세요!");
+
+        setErrorMessage((prev) => ({
+          ...prev,
+          usernameMsg: "이름을 입력해주세요!",
+        }));
         break;
+
+      // case "email":
+      //   setInputValid((prev) => ({
+      //     ...prev,
+      //     emailValid:
+      //       value.trim().length > 0 &&
+      //       typeof value === "string" &&
+      //       value.includes("@"),
+      //   }));
+      //   inputValid.username
+      //     ? setErrorMessage("")
+      //     : setErrorMessage("이름을 입력해주세요!");
+      //   break;
     }
 
     // console.log(inputValue);
@@ -60,7 +79,9 @@ function SignUpPage() {
           placeholder="이름을 입력해주세요"
         />
         {inputValid.usernameValid ? null : (
-          <span className="username-error-message">{errorMessage}</span>
+          <span className="username-error-message">
+            {errorMessage.usernameMsg}
+          </span>
         )}
 
         <input
@@ -69,6 +90,9 @@ function SignUpPage() {
           className="email"
           placeholder="이메일을 입력해주세요"
         />
+        {/* {inputValid.usernameValid ? null : (
+          <span className="username-error-message">{errorMessage}</span>
+        )} */}
 
         <input
           onChange={handleInput}
