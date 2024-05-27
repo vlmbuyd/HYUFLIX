@@ -71,8 +71,10 @@ const Container = styled.div`
     justify-content: space-around;
     width: 300px;
 
-    & span {
+    & span,
+    a {
       font-size: 11px;
+      cursor: pointer;
     }
   }
 `;

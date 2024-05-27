@@ -8,6 +8,7 @@ import UpComing from "./pages/UpComing";
 import SignUpPage from "./pages/SignUpPage";
 import MovieDetail from "./components/MovieDetail";
 import NotFoundPage from "./pages/NotFoundPage";
+import LoginPage from "./pages/LoginPage";
 
 function Main() {
   return (
@@ -49,6 +50,7 @@ function Main() {
             />
           </Route>
 
+          <Route path="login" element={<LoginPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>

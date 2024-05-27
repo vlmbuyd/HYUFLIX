@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Container from "../styles/signup";
 
 function SignUpPage() {
+  const navigate = useNavigate();
   const [inputValue, setInputValue] = useState({
     username: "",
     email: "",
@@ -150,7 +152,6 @@ function SignUpPage() {
 
       case "pw-check":
         let isPwCheckValid = value === inputValue.pw;
-        console.log(isPwCheckValid);
         setInputValid((prev) => ({
           ...prev,
           pwCheckValid: isPwCheckValid,
@@ -167,10 +168,12 @@ function SignUpPage() {
             }));
         break;
     }
+  };
 
-    // console.log(inputValue);
-    console.log(inputValid);
-    // console.log(errorMessage);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert("회원가입 되었습니다!");
+    navigate("/login");
   };
 
   // useEffect(() => {
@@ -180,7 +183,7 @@ function SignUpPage() {
   return (
     <Container>
       <h1>회원가입</h1>
-      <form action="#" method="GET">
+      <form action="#" method="GET" onSubmit={handleSubmit}>
         <div className="username-container">
           <input
             name="username"
@@ -220,6 +223,7 @@ function SignUpPage() {
             name="pw"
             onChange={handleInput}
             placeholder="비밀번호를 입력해주세요"
+            type="password"
           ></input>
           {inputValid.pwValid ? null : (
             <span className="error-message">{errorMessage.pwMsg}</span>
@@ -231,6 +235,7 @@ function SignUpPage() {
             name="pw-check"
             onChange={handleInput}
             placeholder="비밀번호를 입력해주세요"
+            type="password"
           ></input>
           {inputValid.pwCheckValid ? null : (
             <span className="error-message">{errorMessage.pwCheckMsg}</span>
@@ -247,7 +252,9 @@ function SignUpPage() {
       </form>
       <div className="login-redirect">
         <span>이미 아이디가 있으신가요?</span>
-        <span>로그인 페이지로 이동하기</span>
+        <span>
+          <Link to="/login">로그인 페이지로 이동하기</Link>
+        </span>
       </div>
     </Container>
   );
