@@ -19,8 +19,8 @@ function MainPage() {
 
   return (
     <>
-      <Styled.Welcome>환영합니다</Styled.Welcome>
       <Styled.Container>
+        <h1 className="welcome">환영합니다</h1>
         <h2>🎬Find your movies!</h2>
         <div className="input-container">
           <form onSubmit={handleSubmit} action="GET">

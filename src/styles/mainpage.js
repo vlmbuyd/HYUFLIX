@@ -1,22 +1,26 @@
 import styled from "styled-components";
 import searchIcon from "../assets/search.png";
 
-const Welcome = styled.h1`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 40vh;
-  margin-bottom: 30px;
-  background-color: black;
-  color: white;
-  font-size: 25px;
-`;
-
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+  /* height: auto; */
+  /* overflow: hidden; */
+  background-color: #1f2047;
+
+  .welcome {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 30vh;
+    margin-bottom: 30px;
+    background-color: black;
+    color: white;
+    font-size: 25px;
+  }
 
   h2 {
     margin-bottom: 40px;
@@ -59,9 +63,9 @@ const Container = styled.div`
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
     width: 70%;
-    height: 400px;
+    max-height: 500px;
     padding: 20px 40px;
-    overflow: scroll;
+    overflow: auto;
     border-radius: 5px;
     background-color: #1b1939;
 
@@ -82,6 +86,5 @@ const Container = styled.div`
 `;
 
 export default {
-  Welcome,
   Container,
 };
