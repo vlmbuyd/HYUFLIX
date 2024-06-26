@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { getSearch } from "../api/api";
 import Styled from "../styles/mainpage";
+import starIcon from "../assets/star.png";
 
 function MainPage() {
   const [inputValue, setInputValue] = useState("");
@@ -38,12 +39,16 @@ function MainPage() {
               return (
                 <li>
                   <img
+                    className="content-img"
                     src={`https://image.tmdb.org/t/p/original/${item.poster_path}`}
                     alt="movie-image"
                   />
                   <div className="description">
-                    <h1>{item.original_title}</h1>
-                    <span>{item.vote_average}</span>
+                    <h3>{item.original_title}</h3>
+                    <div className="rating">
+                      <img src={starIcon} alt="" />
+                      <span>{item.vote_average}</span>
+                    </div>
                   </div>
                 </li>
               );

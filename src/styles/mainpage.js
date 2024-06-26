@@ -83,11 +83,41 @@ const Container = styled.div`
       background-color: #3c386b;
     }
 
-    img {
+    .content-img {
       width: 100%;
       height: 82%;
       overflow: hidden;
       object-fit: cover;
+    }
+
+    .description {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 7px;
+    }
+
+    .description h3 {
+      width: 75%;
+      font-size: 11px;
+      font-weight: 500;
+      line-height: 1.3em;
+      color: white;
+    }
+
+    .rating {
+      display: flex;
+      /* align-items: flex-start; */
+    }
+
+    .rating img {
+      width: 10px;
+      height: auto;
+      margin-right: 3px;
+    }
+
+    .rating span {
+      color: white;
     }
   }
 
