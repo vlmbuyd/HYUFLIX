@@ -42,8 +42,14 @@ const Container = styled.div`
     .search-input {
       width: 300px;
       height: 35px;
+      padding-left: 15px;
       border: none;
       border-radius: 50px;
+    }
+
+    .search-input:focus {
+      outline: none;
+      border: 2px solid #4e1570;
     }
 
     .submit-btn {
