@@ -4,16 +4,6 @@ import { getAPI } from "../api/api";
 import Styled from "../styles/moviedetail";
 import starIcon from "../assets/star.png";
 
-const StarRating = ({ rating }) => {
-  return (
-    <>
-      {Array.from({ length: rating }, (_, i) => {
-        <img key={i} src={starIcon} value={rating} />;
-      })}
-    </>
-  );
-};
-
 function MovieDetail({ index }) {
   const [item, setItem] = useState({});
   const [rating, setRating] = useState();

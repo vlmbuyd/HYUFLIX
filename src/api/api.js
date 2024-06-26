@@ -58,9 +58,10 @@ export const getAPI = async (index) => {
   return data;
 };
 
-export const getSearch = async () => {
+export const getSearch = async (title) => {
   const response = await fetch(
-    `https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page=1?api_key=${key}`,
+    `https://api.themoviedb.org/3/search/movie?query=${title}&api_key=${key}`,
+    // `https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page=1?api_key=${key}`,
     serachOptions
   );
   const data = response.json();

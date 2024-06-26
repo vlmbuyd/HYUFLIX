@@ -49,7 +49,7 @@ const Container = styled.div`
       background-image: url(${searchIcon});
       background-repeat: no-repeat;
       background-position: center;
-      background-size: 20px 20px;
+      background-size: 18px 18px;
     }
   }
 `;
