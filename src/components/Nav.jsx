@@ -20,7 +20,7 @@ const Ul = styled.ul`
 
 const TitleNavLink = styled(NavLink)`
   display: inline-block;
-  margin: 12px;
+  margin: 12px 0 0 15px;
   font-size: 22px;
   color: white;
   font-weight: 400;

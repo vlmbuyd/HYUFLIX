@@ -16,7 +16,7 @@ const Container = styled.div`
     align-items: center;
     width: 100%;
     height: 30vh;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
     background-color: black;
     color: white;
     font-size: 25px;
@@ -65,8 +65,9 @@ const Container = styled.div`
     width: 70%;
     max-height: 500px;
     padding: 20px 40px;
+    margin-bottom: 30px;
     overflow: auto;
-    border-radius: 5px;
+    border-radius: 7px;
     background-color: #1b1939;
 
     li {
@@ -82,6 +83,24 @@ const Container = styled.div`
       overflow: hidden;
       object-fit: cover;
     }
+  }
+
+  .search-container::-webkit-scrollbar {
+    width: 8px;
+    background-color: #1f1e1e;
+  }
+
+  .search-container::-webkit-scrollbar-thumb {
+    background-color: #e0ba13;
+    border-radius: 5px;
+    background-clip: padding-box;
+    border: 2px solid transparent;
+  }
+
+  .container::-webkit-scrollbar-track {
+    background-color: grey;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 5px white;
   }
 `;
 
