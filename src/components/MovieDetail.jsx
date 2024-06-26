@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import getAPI from "../api/api";
+import { getAPI } from "../api/api";
 import Styled from "../styles/moviedetail";
 import starIcon from "../assets/star.png";
 

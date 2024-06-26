@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import getAPI from "../api/api";
+import { getAPI } from "../api/api";
 import MovieList from "../components/MovieList";
 import Loading from "../components/Loading";
 

@@ -1,63 +1,29 @@
-import styled from "styled-components";
-import searchIcon from "../assets/search.png";
-
-const Welcome = styled.h1`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 40vh;
-  margin-bottom: 30px;
-  background-color: black;
-  color: white;
-  font-size: 25px;
-`;
-
-const Main = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const Title = styled.h2`
-  margin-bottom: 40px;
-  font-size: 30px;
-  color: white;
-`;
-
-const SearchContainer = styled.div`
-  position: relative;
-`;
-
-const SearchInput = styled.input`
-  width: 300px;
-  height: 35px;
-  border: none;
-  border-radius: 50px;
-`;
-
-const SearchIcon = styled.img`
-  position: absolute;
-  right: -40px;
-  width: 20px;
-  height: 20px;
-  border-radius: 3px;
-  /* border-radius: 50%; */
-  background-color: #fcba03;
-  transform: translateY(50%);
-`;
+import { useState } from "react";
+import Styled from "../styles/mainpage";
 
 function MainPage() {
+  const [inputValue, setInputValue] = useState();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
+  const handleInput = (e) => {
+    console.log(e.target.value);
+  };
+
   return (
     <>
-      <Welcome>환영합니다</Welcome>
-      <Main>
-        <Title>🎬Find your movies!</Title>
-        <SearchContainer>
-          <SearchInput />
-          <SearchIcon src={searchIcon} />
-        </SearchContainer>
-      </Main>
+      <Styled.Welcome>환영합니다</Styled.Welcome>
+      <Styled.Container>
+        <h2>🎬Find your movies!</h2>
+        <div className="search-container">
+          <form onSubmit={handleSubmit} action="GET">
+            <input className="search-input" onChange={handleInput} />
+            <button className="submit-btn" type="submit" />
+          </form>
+        </div>
+      </Styled.Container>
     </>
   );
 }
