@@ -22,7 +22,7 @@ function MainPage() {
       <Styled.Welcome>환영합니다</Styled.Welcome>
       <Styled.Container>
         <h2>🎬Find your movies!</h2>
-        <div className="search-container">
+        <div className="input-container">
           <form onSubmit={handleSubmit} action="GET">
             <input
               className="search-input"
@@ -32,11 +32,24 @@ function MainPage() {
             <button className="submit-btn" type="submit" />
           </form>
         </div>
-        <ul className="search-container">
-          {searchData.map((item) => {
-            return <li>{item.original_title}</li>;
-          })}
-        </ul>
+        {inputValue && (
+          <ul className="search-container">
+            {searchData.map((item) => {
+              return (
+                <li>
+                  <img
+                    src={`https://image.tmdb.org/t/p/original/${item.poster_path}`}
+                    alt="movie-image"
+                  />
+                  <div className="description">
+                    <h1>{item.original_title}</h1>
+                    <span>{item.vote_average}</span>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        )}
       </Styled.Container>
     </>
   );

@@ -47,7 +47,7 @@ function Nav() {
   return (
     <NavContainer>
       <h1>
-        <TitleNavLink to="/">UMC Movie</TitleNavLink>
+        <TitleNavLink to="/">SMUFLIX</TitleNavLink>
       </h1>
 
       <Ul>
