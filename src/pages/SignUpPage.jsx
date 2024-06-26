@@ -9,7 +9,7 @@ function SignUpPage() {
     email: "",
     age: "",
     pw: "",
-    checkpw: "",
+    pwCheck: "",
   });
   const [inputValid, setInputValid] = useState({
     usernameValid: false,
@@ -25,6 +25,7 @@ function SignUpPage() {
     pwMsg: "",
     pwCheckMsg: "",
   });
+  const [value, setValue] = useState("");
 
   const submitRequirements =
     inputValid.usernameValid &&
@@ -150,7 +151,7 @@ function SignUpPage() {
         }
         break;
 
-      case "pw-check":
+      case "pwCheck":
         let isPwCheckValid = value === inputValue.pw;
         setInputValid((prev) => ({
           ...prev,
@@ -174,6 +175,8 @@ function SignUpPage() {
     e.preventDefault();
     alert("회원가입 되었습니다!");
     navigate("/login");
+
+    console.log(inputValue);
   };
 
   // useEffect(() => {
@@ -232,7 +235,7 @@ function SignUpPage() {
 
         <div className="pwcheck-container">
           <input
-            name="pw-check"
+            name="pwCheck"
             onChange={handleInput}
             placeholder="비밀번호를 입력해주세요"
             type="password"
@@ -247,13 +250,13 @@ function SignUpPage() {
           className={submitRequirements ? "enabled" : "disabled"}
           type="submit"
         >
-          제출하기
+          회원가입
         </button>
       </form>
       <div className="login-redirect">
         <span>이미 아이디가 있으신가요?</span>
         <span>
-          <Link to="/login">로그인 페이지로 이동하기</Link>
+          <Link to="/login">로그인 페이지로 이동</Link>
         </span>
       </div>
     </Container>

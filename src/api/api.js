@@ -1,11 +1,20 @@
 const key = "a050f3beccdafdbb0b24bfa3ce6e3741";
 
-const options = {
+const pageOptions = {
   method: "GET",
   headers: {
     accept: "application/json",
     Authorization:
       "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMDUwZjNiZWNjZGFmZGJiMGIyNGJmYTNjZTZlMzc0MSIsInN1YiI6IjY2M2Y4MWU4ZWE5ZjBlNzE0NmMxOWNkZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.FB7En8B0HHrpdemrYAdWbtLCpZMzsItrRFCZ9IMVipw",
+  },
+};
+
+const serachOptions = {
+  method: "GET",
+  headers: {
+    accept: "application/json",
+    Authorization:
+      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMDUwZjNiZWNjZGFmZGJiMGIyNGJmYTNjZTZlMzc0MSIsIm5iZiI6MTcxOTM4MTIzMC43MTQyMTIsInN1YiI6IjY2M2Y4MWU4ZWE5ZjBlNzE0NmMxOWNkZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Kfo0zEZRq_7dpMl9JdDcvJv0PHV9_G70u8_ljWcSryk",
   },
 };
 
@@ -43,8 +52,17 @@ function getIndex(index) {
   return result;
 }
 
-export default async function getAPI(index) {
-  const response = await fetch(`${getIndex(index)}api_key=${key}`, options);
+export async function getAPI(index) {
+  const response = await fetch(`${getIndex(index)}api_key=${key}`, pageOptions);
+  const data = response.json();
+  return data;
+}
+
+export async function getSearch() {
+  const response = await fetch(
+    "https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page=1",
+    options
+  );
   const data = response.json();
   return data;
 }
