@@ -18,6 +18,15 @@ const serachOptions = {
   },
 };
 
+const detailOptions = {
+  method: "GET",
+  headers: {
+    accept: "application/json",
+    Authorization:
+      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMDUwZjNiZWNjZGFmZGJiMGIyNGJmYTNjZTZlMzc0MSIsIm5iZiI6MTcxOTQ5ODEwOC43MDE1MDcsInN1YiI6IjY2M2Y4MWU4ZWE5ZjBlNzE0NmMxOWNkZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.TXfXeo1dih_-dOhFOmuYtqBgGCQXr71nUTc57VA3G38",
+  },
+};
+
 const popular = {
   name: "popular",
   url: "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1?",
@@ -61,8 +70,16 @@ export const getAPI = async (index) => {
 export const getSearch = async (title) => {
   const response = await fetch(
     `https://api.themoviedb.org/3/search/movie?query=${title}&api_key=${key}`,
-    // `https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page=1?api_key=${key}`,
     serachOptions
+  );
+  const data = response.json();
+  return data;
+};
+
+export const getDetail = async ({ id }) => {
+  const response = await fetch(
+    `https://api.themoviedb.org/3/movie/${id}?language=en-US&api_key=${key}`,
+    detailOptions
   );
   const data = response.json();
   return data;

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getAPI } from "../api/api";
+import { getAPI, getDetail } from "../api/api";
 import Styled from "../styles/moviedetail";
 import starIcon from "../assets/star.png";
 
@@ -9,15 +9,16 @@ function MovieDetail({ index }) {
   const [rating, setRating] = useState();
   const { title } = useParams();
 
-  function getDetail(arr, title) {
+  function getData(arr, title) {
     return arr.find((item) => item.original_title === title);
   }
 
   const handleDetail = async () => {
-    const detailData = await getAPI(index);
-    const data = detailData.results;
-    console.log(data);
-    const detail = getDetail(data, title);
+    // const response = await getAPI(index);
+    const response = await getDetail();
+    const result = response.results;
+    console.log(result);
+    const detail = getData(result, title);
     setItem(detail);
 
     const rate = Math.floor(detail.vote_average);
