@@ -25,7 +25,7 @@ function MainPage() {
     e.preventDefault();
   };
 
-  const handleInput = async (e) => {
+  const handleInput = (e) => {
     setInputValue(e.target.value);
   };
 

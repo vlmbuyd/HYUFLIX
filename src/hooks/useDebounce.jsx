@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { getSearch } from "../api/api";
 
 const useDebounce = (value, delay) => {
   const [debounceValue, setDebounceValue] = useState(value);
