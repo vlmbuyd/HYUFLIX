@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { getSearch } from "../api/api";
+import useDebounce from "../hooks/useDebounce";
 import Styled from "../styles/mainpage";
 import starIcon from "../assets/star.png";
 
@@ -7,15 +8,25 @@ function MainPage() {
   const [inputValue, setInputValue] = useState("");
   const [searchData, setsearchData] = useState([]);
 
+  const debouncedValue = useDebounce(inputValue, 1000);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      if (debouncedValue) {
+        const response = await getSearch(debouncedValue);
+        setsearchData(response.results);
+      }
+    };
+
+    fetchData();
+  }, [debouncedValue]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
   };
 
   const handleInput = async (e) => {
     setInputValue(e.target.value);
-    const response = await getSearch(e.target.value);
-    setsearchData(response.results);
-    console.log(searchData);
   };
 
   return (
@@ -33,7 +44,7 @@ function MainPage() {
             <button className="submit-btn" type="submit" />
           </form>
         </div>
-        {inputValue && (
+        {debouncedValue && (
           <ul className="search-container">
             {searchData.map((item) => {
               return (
