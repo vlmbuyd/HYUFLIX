@@ -1,10 +1,16 @@
 import styled from "styled-components";
 import starIcon from "../assets/star.png";
 
-const Image = styled.img`
-  height: 380px;
-  margin-bottom: 10px;
-  object-fit: cover;
+const Dim = styled.div`
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: inherit;
+  padding: 1px 10px;
+  font-size: 14px;
+  line-height: 1.4em;
+  background-color: rgba(0, 0, 0, 0.4);
 `;
 
 const ItemContainer = styled.div`
@@ -17,6 +23,16 @@ const ItemContainer = styled.div`
   margin: 10px 0;
   color: white;
   background-color: #3c386b;
+
+  &:hover ${Dim} {
+    display: block;
+  }
+`;
+
+const Image = styled.img`
+  height: 380px;
+  margin-bottom: 10px;
+  object-fit: cover;
 `;
 
 const Description = styled.div`
@@ -51,20 +67,23 @@ const Rate = styled.span`
 
 function MovieListItem({ item }) {
   return (
-    <ItemContainer>
-      <Image
-        src={`https://image.tmdb.org/t/p/original${item.backdrop_path}`}
-        alt={item.original_title}
-      />
+    <>
+      <ItemContainer>
+        <Dim>{item.overview}</Dim>
+        <Image
+          src={`https://image.tmdb.org/t/p/original${item.backdrop_path}`}
+          alt={item.original_title}
+        />
 
-      <Description>
-        <Title>{item.original_title}</Title>
-        <RateContainer>
-          <RatingIcon src={starIcon}></RatingIcon>
-          <Rate>{item.vote_average}</Rate>
-        </RateContainer>
-      </Description>
-    </ItemContainer>
+        <Description>
+          <Title>{item.original_title}</Title>
+          <RateContainer>
+            <RatingIcon src={starIcon}></RatingIcon>
+            <Rate>{item.vote_average}</Rate>
+          </RateContainer>
+        </Description>
+      </ItemContainer>
+    </>
   );
 }
 

@@ -13,6 +13,7 @@ function PopularPage() {
     const popularData = await getAPI(popular);
     const data = popularData.results;
     setItems(data);
+    console.log(items);
     setLoading(false);
   };
 

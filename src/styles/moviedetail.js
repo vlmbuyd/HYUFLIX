@@ -67,6 +67,4 @@ const IconContainer = styled.div`
   }
 `;
 
-const RatingIcon = styled.img``;
-
 export default { Container, BackgroundImg, RatingContainer, IconContainer };
