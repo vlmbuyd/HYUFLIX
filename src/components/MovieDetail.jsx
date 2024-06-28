@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getAPI, getDetail } from "../api/api";
+import { getCredit, getDetail } from "../api/api";
 import Styled from "../styles/moviedetail";
 import starIcon from "../assets/star.png";
 
@@ -13,6 +13,8 @@ function MovieDetail() {
     console.log(movieId);
     const result = await getDetail(movieId);
     console.log(result);
+    const credit = await getCredit(movieId);
+    console.log(credit);
     // setItem(detail);
 
     // const rate = Math.floor(detail.vote_average);

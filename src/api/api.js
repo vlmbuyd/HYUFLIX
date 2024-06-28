@@ -87,6 +87,13 @@ export const getDetail = async (id) => {
   return data;
 };
 
-// export const getCredits = async = ()
+export const getCredit = async (id) => {
+  const response = await fetch(
+    `https://api.themoviedb.org/3/movie/${id}/credits?language=en-US`,
+    detailOptions
+  );
+  const data = response.json();
+  return data;
+};
 
 //1022789
