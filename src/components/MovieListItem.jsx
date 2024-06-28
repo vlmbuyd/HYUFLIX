@@ -7,10 +7,10 @@ const Dim = styled.div`
   top: 0;
   left: 0;
   height: inherit;
-  padding: 1px 10px;
+  padding: 13px 12px;
   font-size: 14px;
-  line-height: 1.4em;
-  background-color: rgba(0, 0, 0, 0.4);
+  line-height: 1.5em;
+  background-color: rgba(0, 0, 0, 0.6);
 `;
 
 const ItemContainer = styled.div`

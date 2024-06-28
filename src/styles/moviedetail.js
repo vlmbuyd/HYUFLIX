@@ -22,6 +22,7 @@ const Container = styled.div`
 
   .movie-img {
     margin-right: 80px;
+
     img {
       width: 300px;
       height: 420px;
@@ -84,4 +85,57 @@ const IconContainer = styled.div`
   }
 `;
 
-export default { Container, RatingContainer, IconContainer };
+const CreditContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  padding-top: 30px;
+  background-color: #1f2047;
+
+  .cast,
+  .crew {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  h3 {
+    font-size: 17px;
+    color: #81818a;
+    margin-bottom: 35px;
+  }
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 15px;
+    /* display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px; */
+  }
+
+  li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  span {
+    width: 80%;
+    text-align: center;
+    line-height: 1.4em;
+    color: white;
+  }
+
+  img {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+`;
+
+export default { Container, RatingContainer, IconContainer, CreditContainer };
