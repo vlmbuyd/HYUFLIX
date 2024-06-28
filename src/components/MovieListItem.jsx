@@ -46,6 +46,7 @@ const Title = styled.strong`
   width: 70%;
   font-size: 16px;
   font-weight: 400;
+  line-height: 1.3em;
 `;
 
 const RateContainer = styled.div`
