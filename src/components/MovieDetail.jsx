@@ -13,34 +13,29 @@ function MovieDetail() {
     const result = await getDetail(movieId);
     setItem(result);
     console.log(result);
+    const rate = Math.floor(result.vote_average);
+    setRating(rate);
     const credit = await getCredit(movieId);
     // console.log(credit);
-
-    // const rate = Math.floor(detail.vote_average);
-    // setRating(rate);
   };
 
   useEffect(() => {
     handleDetail();
   }, [movieId]);
 
-  const imageUrl =
-    item.belongs_to_collection?.backdrop_path || item.backdrop_path;
-
   return (
-    <Styled.Container>
-      <Styled.BackgroundImg
-        src={`https://image.tmdb.org/t/p/original${imageUrl}`}
-        alt={item.original_title}
-      />
+    <Styled.Container
+      path={`https://image.tmdb.org/t/p/original${
+        item.belongs_to_collection?.backdrop_path || item.backdrop_path
+      }`}
+    >
       <img
         className="movie-img"
         src={`https://image.tmdb.org/t/p/original${item.backdrop_path}`}
-        // src={`https://image.tmdb.org/t/p/original${item.belongs_to_collection.poster_path}`}
         alt={item.original_title}
       />
 
-      {/* <div className="description">
+      <div className="description">
         <h1 className="title">{item.original_title}</h1>
         <Styled.RatingContainer>
           <strong className="rating">평점 </strong>
@@ -58,7 +53,7 @@ function MovieDetail() {
             ? "TMDB에서 제공하는 API에 상세 줄거리 정보가 없습니다."
             : item.overview}
         </p>
-      </div> */}
+      </div>
     </Styled.Container>
   );
 }

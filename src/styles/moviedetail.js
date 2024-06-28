@@ -1,15 +1,31 @@
 import styled from "styled-components";
 
 const Container = styled.div`
+  display: flex;
   position: relative;
+  width: 100%;
+  height: 90vh;
+
+  &::before {
+    content: "";
+    opacity: 0.2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: inherit;
+    background-image: url(${(props) => props.path});
+    background-size: cover;
+  }
 
   & .movie-img {
     width: 300px;
     height: 420px;
-    position: absolute;
+    /* position: absolute;
     top: 15%;
-    left: 15%;
+    left: 15%; */
     object-fit: cover;
+    opacity: 0.9;
   }
 
   & .description {
@@ -17,9 +33,9 @@ const Container = styled.div`
     flex-direction: column;
     justify-content: space-around;
     align-items: flex-start;
-    position: absolute;
+    /* position: absolute;
     top: 15%;
-    left: 40%;
+    left: 40%; */
     width: 500px;
     height: 400px;
     color: white;
@@ -46,13 +62,6 @@ const Container = styled.div`
   }
 `;
 
-const BackgroundImg = styled.img`
-  width: 100%;
-  height: 91vh;
-  object-fit: cover;
-  opacity: 0.2;
-`;
-
 const RatingContainer = styled.div`
   display: flex;
 `;
@@ -67,4 +76,4 @@ const IconContainer = styled.div`
   }
 `;
 
-export default { Container, BackgroundImg, RatingContainer, IconContainer };
+export default { Container, RatingContainer, IconContainer };
