@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getSearch } from "../api/api";
+import { Link } from "react-router-dom";
 import useDebounce from "../hooks/useDebounce";
 import Styled from "../styles/mainpage";
 import starIcon from "../assets/star.png";
@@ -50,21 +51,23 @@ function MainPage() {
             {searchData.map((item) => {
               return (
                 <>
-                  <li>
-                    <Styled.Overview>{item.overview}</Styled.Overview>
-                    <img
-                      className="content-img"
-                      src={`https://image.tmdb.org/t/p/original/${item.poster_path}`}
-                      alt="movie-image"
-                    />
-                    <div className="description">
-                      <h3>{item.original_title}</h3>
-                      <div className="rating">
-                        <img src={starIcon} alt="" />
-                        <span>{item.vote_average}</span>
+                  <Link to={`movie/${item.id}`}>
+                    <li>
+                      <Styled.Overview>{item.overview}</Styled.Overview>
+                      <img
+                        className="content-img"
+                        src={`https://image.tmdb.org/t/p/original/${item.poster_path}`}
+                        alt="movie-image"
+                      />
+                      <div className="description">
+                        <h3>{item.original_title}</h3>
+                        <div className="rating">
+                          <img src={starIcon} alt="" />
+                          <span>{item.vote_average}</span>
+                        </div>
                       </div>
-                    </div>
-                  </li>
+                    </li>
+                  </Link>
                 </>
               );
             })}

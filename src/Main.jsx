@@ -16,6 +16,7 @@ function Main() {
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<MainPage />} />
+          <Route path="movie/:movieId" element={<MovieDetail />} />
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="login" element={<LoginPage />} />
 
