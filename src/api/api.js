@@ -76,10 +76,11 @@ export const getSearch = async (title) => {
   return data;
 };
 
-export const getDetail = async ({ id }) => {
+export const getDetail = async ({ movieId }) => {
   const response = await fetch(
-    `https://api.themoviedb.org/3/movie/${id}?language=en-US&api_key=${key}`,
-    detailOptions
+    // `https://api.themoviedb.org/3/movie/${id}?language=en-US&api_key=${key}`,
+    `https://api.themoviedb.org/3/movie/${movieId}?api_key=${key}`
+    // detailOptions
   );
   const data = response.json();
   return data;

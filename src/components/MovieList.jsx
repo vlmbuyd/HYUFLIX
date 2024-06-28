@@ -19,7 +19,7 @@ function MovieList({ items }) {
         {items.map((item) => {
           return (
             <li key={item.id}>
-              <Link to={`movie/${item.original_title}`}>
+              <Link to={`movie/${item.id}`}>
                 <MovieListItem item={item}></MovieListItem>
               </Link>
             </li>

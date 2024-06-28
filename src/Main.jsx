@@ -21,34 +21,22 @@ function Main() {
 
           <Route path="popular">
             <Route index element={<PopularPage />} />
-            <Route
-              path="movie/:title"
-              element={<MovieDetail index="popular" />}
-            />
+            <Route path="movie/:movieId" element={<MovieDetail />} />
           </Route>
 
           <Route path="now-playing">
             <Route index element={<NowPlayingPage />} />
-            <Route
-              path="movie/:title"
-              element={<MovieDetail index="nowplaying" />}
-            />
+            <Route path="movie/:movieId" element={<MovieDetail />} />
           </Route>
 
           <Route path="top-rated">
             <Route index element={<TopRatedPage />} />
-            <Route
-              path="movie/:title"
-              element={<MovieDetail index="toprated" />}
-            />
+            <Route path="movie/:movieId" element={<MovieDetail />} />
           </Route>
 
           <Route path="upcoming">
             <Route index element={<UpComing />} />
-            <Route
-              path="movie/:title"
-              element={<MovieDetail index="upcoming" />}
-            />
+            <Route path="movie/:movieId" element={<MovieDetail />} />
           </Route>
 
           <Route path="*" element={<NotFoundPage />} />
