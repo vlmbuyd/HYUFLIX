@@ -76,12 +76,17 @@ export const getSearch = async (title) => {
   return data;
 };
 
-export const getDetail = async ({ movieId }) => {
+export const getDetail = async (id) => {
   const response = await fetch(
-    // `https://api.themoviedb.org/3/movie/${id}?language=en-US&api_key=${key}`,
-    `https://api.themoviedb.org/3/movie/${movieId}?api_key=${key}`
-    // detailOptions
+    `https://api.themoviedb.org/3/movie/${id}?language=en-US`,
+    // `https://api.themoviedb.org/3/movie/${movieId}?api_key=${key}`
+    // `https://api.themoviedb.org/3/movie/1022789?&append_to_response=videos&api_key=a050f3beccdafdbb0b24bfa3ce6e3741`
+    detailOptions
   );
   const data = response.json();
   return data;
 };
+
+// export const getCredits = async = ()
+
+//1022789
