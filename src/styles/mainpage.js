@@ -78,8 +78,9 @@ const Container = styled.div`
   }
 
   .search-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 10px;
     width: 70%;
     max-height: 500px;
