@@ -2,9 +2,11 @@ import styled from "styled-components";
 
 const Container = styled.div`
   display: flex;
+  align-items: center;
   position: relative;
   width: 100%;
   height: 90vh;
+  padding-left: 15%;
 
   &::before {
     content: "";
@@ -18,45 +20,51 @@ const Container = styled.div`
     background-size: cover;
   }
 
-  & .movie-img {
-    width: 300px;
-    height: 420px;
-    /* position: absolute;
-    top: 15%;
-    left: 15%; */
-    object-fit: cover;
-    opacity: 0.9;
+  .movie-img {
+    margin-right: 80px;
+    img {
+      width: 300px;
+      height: 420px;
+      object-fit: cover;
+      opacity: 0.9;
+    }
   }
 
-  & .description {
+  .description {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: flex-start;
-    /* position: absolute;
-    top: 15%;
-    left: 40%; */
-    width: 500px;
+    max-width: 600px;
     height: 400px;
     color: white;
   }
 
-  & .title {
+  .title {
+    width: 550px;
     font-size: 30px;
   }
 
-  & .rating,
+  .rating,
   .release-date,
   .plot-title {
     font-size: 17px;
   }
 
-  & .rating {
+  .rating {
     display: inline-block;
     margin-right: 10px;
   }
 
-  & .plot {
+  .plot-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .plot-title {
+    margin-bottom: 10px;
+  }
+  .plot {
     font-size: 15px;
     line-height: 1.5em;
   }
