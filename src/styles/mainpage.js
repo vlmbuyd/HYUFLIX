@@ -90,6 +90,11 @@ const Container = styled.div`
     border-radius: 7px;
     background-color: #1b1939;
 
+    .loading {
+      color: #81818a;
+      font-size: 11px;
+    }
+
     li {
       position: relative;
       width: 189px;

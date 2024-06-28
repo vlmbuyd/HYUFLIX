@@ -8,15 +8,18 @@ import starIcon from "../assets/star.png";
 function MainPage() {
   const [inputValue, setInputValue] = useState("");
   const [searchData, setsearchData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const debouncedValue = useDebounce(inputValue, 1000);
 
   useEffect(() => {
     const fetchData = async () => {
       if (debouncedValue) {
+        setIsLoading(true);
         const response = await getSearch(debouncedValue);
         setsearchData(response.results);
         console.log(response.results);
+        setIsLoading(false);
       }
     };
 
@@ -48,29 +51,29 @@ function MainPage() {
         </div>
         {debouncedValue && (
           <ul className="search-container">
-            {searchData.map((item) => {
-              return (
-                <>
+            {isLoading ? (
+              <span className="loading">데이터를 받아오는 중입니다..</span>
+            ) : (
+              searchData.map((item) => (
+                <li key={item.id}>
+                  <Styled.Overview>{item.overview}</Styled.Overview>
                   <Link to={`movie/${item.id}`}>
-                    <li>
-                      <Styled.Overview>{item.overview}</Styled.Overview>
-                      <img
-                        className="content-img"
-                        src={`https://image.tmdb.org/t/p/original/${item.poster_path}`}
-                        alt="movie-image"
-                      />
-                      <div className="description">
-                        <h3>{item.original_title}</h3>
-                        <div className="rating">
-                          <img src={starIcon} alt="" />
-                          <span>{item.vote_average}</span>
-                        </div>
+                    <img
+                      className="content-img"
+                      src={`https://image.tmdb.org/t/p/original/${item.poster_path}`}
+                      alt="movie-image"
+                    />
+                    <div className="description">
+                      <h3>{item.original_title}</h3>
+                      <div className="rating">
+                        <img src={starIcon} alt="" />
+                        <span>{item.vote_average}</span>
                       </div>
-                    </li>
+                    </div>
                   </Link>
-                </>
-              );
-            })}
+                </li>
+              ))
+            )}
           </ul>
         )}
       </Styled.Container>
