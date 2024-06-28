@@ -1,6 +1,19 @@
 import styled from "styled-components";
 import searchIcon from "../assets/search.png";
 
+const Overview = styled.div`
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: inherit;
+  padding: 13px 12px;
+  font-size: 10px;
+  line-height: 1.3em;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+`;
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -77,10 +90,15 @@ const Container = styled.div`
     background-color: #1b1939;
 
     li {
+      position: relative;
       width: 189px;
       height: 310px;
       margin: 0 auto;
       background-color: #3c386b;
+
+      &:hover ${Overview} {
+        display: block;
+      }
     }
 
     .content-img {
@@ -107,7 +125,6 @@ const Container = styled.div`
 
     .rating {
       display: flex;
-      /* align-items: flex-start; */
     }
 
     .rating img {
@@ -142,4 +159,5 @@ const Container = styled.div`
 
 export default {
   Container,
+  Overview,
 };

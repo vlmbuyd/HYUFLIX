@@ -15,6 +15,7 @@ function MainPage() {
       if (debouncedValue) {
         const response = await getSearch(debouncedValue);
         setsearchData(response.results);
+        console.log(response.results);
       }
     };
 
@@ -48,20 +49,23 @@ function MainPage() {
           <ul className="search-container">
             {searchData.map((item) => {
               return (
-                <li>
-                  <img
-                    className="content-img"
-                    src={`https://image.tmdb.org/t/p/original/${item.poster_path}`}
-                    alt="movie-image"
-                  />
-                  <div className="description">
-                    <h3>{item.original_title}</h3>
-                    <div className="rating">
-                      <img src={starIcon} alt="" />
-                      <span>{item.vote_average}</span>
+                <>
+                  <li>
+                    <Styled.Overview>{item.overview}</Styled.Overview>
+                    <img
+                      className="content-img"
+                      src={`https://image.tmdb.org/t/p/original/${item.poster_path}`}
+                      alt="movie-image"
+                    />
+                    <div className="description">
+                      <h3>{item.original_title}</h3>
+                      <div className="rating">
+                        <img src={starIcon} alt="" />
+                        <span>{item.vote_average}</span>
+                      </div>
                     </div>
-                  </div>
-                </li>
+                  </li>
+                </>
               );
             })}
           </ul>
