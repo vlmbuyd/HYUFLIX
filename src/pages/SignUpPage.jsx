@@ -266,10 +266,12 @@ function SignUpPage() {
         </button>
       </form>
       <div className="login-redirect">
-        <span>이미 아이디가 있으신가요?</span>
         <span>
-          <Link to="/login">로그인 페이지로 이동</Link>
+          <Link to="/login">이미 아이디가 있으신가요?</Link>
         </span>
+        <strong>
+          <Link to="/login">로그인 페이지로 이동</Link>
+        </strong>
       </div>
     </Container>
   );
