@@ -3,11 +3,12 @@ import MovieListItem from "./MovieListItem";
 import { Link } from "react-router-dom";
 
 const Ul = styled.ul`
+  padding: 20px 200px 0 200px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   list-style: none;
-  padding-left: 0;
+  /* padding-left: 0; */
   background-color: #1f2047;
   /* background-color: #292a54; */
 `;

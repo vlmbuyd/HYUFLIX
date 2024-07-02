@@ -57,6 +57,11 @@ function Nav() {
           </LiNavLink>
         </li>
         <li>
+          <LiNavLink style={handleActive} to="login">
+            로그인
+          </LiNavLink>
+        </li>
+        <li>
           <LiNavLink style={handleActive} to="popular">
             Popular
           </LiNavLink>

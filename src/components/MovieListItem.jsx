@@ -8,15 +8,17 @@ const Dim = styled.div`
   left: 0;
   height: inherit;
   padding: 13px 12px;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 1.5em;
   background-color: rgba(0, 0, 0, 0.6);
 `;
 
 const ItemContainer = styled.div`
   position: relative;
-  width: 270px;
-  height: 470px;
+  /* width: 270px;
+  height: 470px; */
+  width: 220px;
+  height: 384px;
   display: flex;
   flex-direction: column;
   border-radius: 9px;
@@ -30,7 +32,8 @@ const ItemContainer = styled.div`
 `;
 
 const Image = styled.img`
-  height: 380px;
+  /* height: 380px; */
+  height: 82%;
   margin-bottom: 10px;
   object-fit: cover;
 `;
@@ -44,7 +47,7 @@ const Description = styled.div`
 const Title = styled.strong`
   /* margin-left: 7px; */
   width: 70%;
-  font-size: 16px;
+  font-size: 13px;
   font-weight: 400;
   line-height: 1.3em;
 `;
