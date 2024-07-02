@@ -24,18 +24,32 @@ const Container = styled.div`
     height: 40px;
     padding-left: 15px;
     border-radius: 20px;
+    margin-bottom: 8px;
   }
 
   & input::placeholder {
     font-size: 11px;
   }
 
-  & .id-input {
-    margin-bottom: 15px;
+  & .error-message {
+    margin-left: 8px;
+    font-size: 11px;
+    color: #a12110;
   }
 
-  & .pw-input {
-    margin-bottom: 40px;
+  & .id-container,
+  .pw-container {
+    display: flex;
+    flex-direction: column;
+    height: 60px;
+  }
+
+  & .id-container {
+    margin-bottom: 5px;
+  }
+
+  & .pw-container {
+    margin-bottom: 30px;
   }
 
   & button {
@@ -45,6 +59,16 @@ const Container = styled.div`
     background-color: white;
     border-radius: 20px;
     font-weight: 600;
+  }
+
+  & .enabled {
+    background-color: #e6b71e;
+    color: black;
+  }
+
+  & .disabled {
+    background-color: white;
+    color: black;
   }
 `;
 
