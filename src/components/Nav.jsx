@@ -67,12 +67,12 @@ function Nav() {
           </LiNavLink>
         </li>
         <li>
-          <LiNavLink style={handleActive} to="now-playing">
+          <LiNavLink style={handleActive} to="now_playing">
             Now Playing
           </LiNavLink>
         </li>
         <li>
-          <LiNavLink style={handleActive} to="top-rated">
+          <LiNavLink style={handleActive} to="top_rated">
             Top Rated
           </LiNavLink>
         </li>

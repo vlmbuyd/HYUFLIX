@@ -16,7 +16,22 @@ const Container = styled.div`
   }
 
   .pagination {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     height: 80px;
+
+    .page-num {
+      font-size: 19px;
+      color: white;
+    }
+
+    .dim {
+      width: 32px;
+      height: 32px;
+      background-image: url(${prevBtn});
+      opacity: 0.2;
+    }
 
     .prev-btn {
       width: 32px;

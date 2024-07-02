@@ -20,8 +20,16 @@ function MovieDetail() {
     console.log(people);
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "auto",
+    });
+  };
+
   useEffect(() => {
     handleDetail();
+    scrollToTop();
   }, [movieId]);
 
   return (
