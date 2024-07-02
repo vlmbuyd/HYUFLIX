@@ -5,7 +5,9 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  height: 87vh;
   margin-top: 20px;
+  background-color: #1f2047;
   color: white;
 
   & h1 {
@@ -19,6 +21,7 @@ const Container = styled.div`
   }
 
   & .username-container,
+  .id-container,
   .email-container,
   .age-container,
   .pw-container,
@@ -26,11 +29,11 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     height: 60px;
-    margin-bottom: 10px;
+    margin-bottom: 3px;
   }
 
   & input {
-    width: 500px;
+    width: 450px;
     height: 40px;
     padding-left: 15px;
     margin-bottom: 8px;
@@ -49,7 +52,7 @@ const Container = styled.div`
 
   & button {
     margin: 0 auto 40px auto;
-    width: 450px;
+    width: 400px;
     height: 40px;
     border-radius: 20px;
     font-weight: 600;

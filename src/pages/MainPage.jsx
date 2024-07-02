@@ -55,9 +55,9 @@ function MainPage() {
               <span className="loading">데이터를 받아오는 중입니다..</span>
             ) : (
               searchData.map((item) => (
-                <li key={item.id}>
-                  <Styled.Overview>{item.overview}</Styled.Overview>
-                  <Link to={`movie/${item.id}`}>
+                <Link to={`movie/${item.id}`}>
+                  <li key={item.id}>
+                    <Styled.Overview>{item.overview}</Styled.Overview>
                     <img
                       className="content-img"
                       src={`https://image.tmdb.org/t/p/original/${item.poster_path}`}
@@ -70,8 +70,8 @@ function MainPage() {
                         <span>{item.vote_average}</span>
                       </div>
                     </div>
-                  </Link>
-                </li>
+                  </li>
+                </Link>
               ))
             )}
           </ul>

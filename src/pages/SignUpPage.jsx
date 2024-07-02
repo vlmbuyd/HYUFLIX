@@ -199,6 +199,18 @@ function SignUpPage() {
           )}
         </div>
 
+        <div className="id-container">
+          <input
+            name="username"
+            value={inputValue.username}
+            onChange={handleInput}
+            placeholder="아이디를 입력해주세요"
+          />
+          {inputValid.usernameValid ? null : (
+            <span className="error-message">{errorMessage.usernameMsg}</span>
+          )}
+        </div>
+
         <div className="email-container">
           <input
             name="email"

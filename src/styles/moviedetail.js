@@ -5,7 +5,7 @@ const Container = styled.div`
   align-items: center;
   position: relative;
   width: 100%;
-  height: 90vh;
+  height: 89vh;
   padding-left: 15%;
 
   &::before {
