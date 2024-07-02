@@ -27,42 +27,11 @@ const detailOptions = {
   },
 };
 
-const popular = {
-  name: "popular",
-  url: "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1?",
-};
-
-const nowPlaying = {
-  name: "nowplaying",
-  url: "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1?",
-};
-
-const topRated = {
-  name: "toprated",
-  url: "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1?",
-};
-
-const upComing = {
-  name: "upcoming",
-  url: "https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1?",
-};
-
-function getIndex(index) {
-  const result =
-    index === popular.name
-      ? popular.url
-      : index === nowPlaying.name
-      ? nowPlaying.url
-      : index === topRated.name
-      ? topRated.url
-      : index === upComing.name
-      ? upComing.url
-      : undefined;
-  return result;
-}
-
 export const getAPI = async (index) => {
-  const response = await fetch(`${getIndex(index)}api_key=${key}`, pageOptions);
+  const response = await fetch(
+    `https://api.themoviedb.org/3/movie/${index}?language=en-US&page=1?`,
+    pageOptions
+  );
   const data = response.json();
   return data;
 };

@@ -9,9 +9,8 @@ function PopularPage() {
 
   const handlePopular = async () => {
     setLoading(true);
-    const popular = "popular";
-    const popularData = await getAPI(popular);
-    const data = popularData.results;
+    const response = await getAPI("popular");
+    const data = response.results;
     setItems(data);
     console.log(items);
     setLoading(false);

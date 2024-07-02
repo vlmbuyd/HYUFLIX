@@ -1,22 +1,12 @@
 import styled from "styled-components";
-import MovieListItem from "./MovieListItem";
 import { Link } from "react-router-dom";
-
-const Ul = styled.ul`
-  padding: 20px 200px 0 200px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  list-style: none;
-  /* padding-left: 0; */
-  background-color: #1f2047;
-  /* background-color: #292a54; */
-`;
+import MovieListItem from "./MovieListItem";
+import Styled from "../styles/movielist";
 
 function MovieList({ items }) {
   return (
-    <>
-      <Ul>
+    <Styled.Container>
+      <ul>
         {items.map((item) => {
           return (
             <li key={item.id}>
@@ -26,8 +16,13 @@ function MovieList({ items }) {
             </li>
           );
         })}
-      </Ul>
-    </>
+      </ul>
+      <div className="pagination">
+        <button className="prev-btn" />
+        {/* <span></span> */}
+        <button className="next-btn" />
+      </div>
+    </Styled.Container>
   );
 }
 

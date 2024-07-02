@@ -9,9 +9,8 @@ function NowPlayingPage() {
 
   const handleNowPlaying = async () => {
     setLoading(true);
-    const nowplaying = "nowplaying";
-    const nowPlaying = await getAPI(nowplaying);
-    const data = nowPlaying.results;
+    const response = await getAPI("now_playing");
+    const data = response.results;
     console.log(data);
     setItems(data);
     setLoading(false);

@@ -9,9 +9,8 @@ function UpComing() {
 
   const handleUpComing = async () => {
     setLoading(true);
-    const upcoming = "upcoming";
-    const upComing = await getAPI(upcoming);
-    const data = upComing.results;
+    const repsonse = await getAPI("upcoming");
+    const data = repsonse.results;
     setItems(data);
     setLoading(false);
   };

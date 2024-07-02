@@ -9,9 +9,8 @@ function TopRatedPage() {
 
   const handleTopRated = async () => {
     setLoading(true);
-    const toprated = "toprated";
-    const topRated = await getAPI(toprated);
-    const data = topRated.results;
+    const response = await getAPI("top_rated");
+    const data = response.results;
     setItems(data);
     setLoading(false);
   };
