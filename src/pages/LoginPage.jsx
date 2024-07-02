@@ -1,6 +1,22 @@
 import Container from "../styles/loginpage";
 
 function LoginPage() {
+  // const navigate = useNavigate();
+  // const [inputValue, setInputValue] = useState({
+  //   id: "",
+  //   pw: "",
+  // });
+  // const [inputValid, setInputValid] = useState({
+  //   idValid: false,
+  //   pwValid: false,
+  // });
+  // const [errorMessage, setErrorMessage] = useState({
+  //   idMsg: "",
+  //   pwMsg: "",
+  // });
+
+  // const submitRequirements = inputValid.idValid && inputValid.pwValid;
+
   return (
     <Container>
       <h1>로그인</h1>

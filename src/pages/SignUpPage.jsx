@@ -6,6 +6,7 @@ function SignUpPage() {
   const navigate = useNavigate();
   const [inputValue, setInputValue] = useState({
     username: "",
+    id: "",
     email: "",
     age: "",
     pw: "",
@@ -13,6 +14,7 @@ function SignUpPage() {
   });
   const [inputValid, setInputValid] = useState({
     usernameValid: false,
+    idValid: false,
     emailValid: false,
     ageValid: false,
     pwValid: false,
@@ -20,15 +22,16 @@ function SignUpPage() {
   });
   const [errorMessage, setErrorMessage] = useState({
     usernameMsg: "",
+    idMsg: "",
     emailMsg: "",
     ageMsg: "",
     pwMsg: "",
     pwCheckMsg: "",
   });
-  const [value, setValue] = useState("");
 
   const submitRequirements =
     inputValid.usernameValid &&
+    inputValid.idValid &&
     inputValid.emailValid &&
     inputValid.ageValid &&
     inputValid.pwValid &&
@@ -48,6 +51,18 @@ function SignUpPage() {
         setErrorMessage((prev) => ({
           ...prev,
           usernameMsg: "이름을 입력해주세요!",
+        }));
+        break;
+
+      case "id":
+        let isIdValid = value.trim().length > 0 && typeof value === "string";
+        setInputValid((prev) => ({
+          ...prev,
+          idValid: isIdValid,
+        }));
+        setErrorMessage((prev) => ({
+          ...prev,
+          idMsg: "아이디를 입력해주세요!",
         }));
         break;
 
@@ -201,13 +216,13 @@ function SignUpPage() {
 
         <div className="id-container">
           <input
-            name="username"
-            value={inputValue.username}
+            name="id"
+            value={inputValue.id}
             onChange={handleInput}
             placeholder="아이디를 입력해주세요"
           />
-          {inputValid.usernameValid ? null : (
-            <span className="error-message">{errorMessage.usernameMsg}</span>
+          {inputValid.idValid ? null : (
+            <span className="error-message">{errorMessage.idMsg}</span>
           )}
         </div>
 
