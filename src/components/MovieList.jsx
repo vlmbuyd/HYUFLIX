@@ -15,9 +15,9 @@ function MovieList() {
   const options = {
     thresold: 0.5,
   };
-  const observe = new IntersectionObserver(() => {
-    setPage((prev) => prev + 1);
-  }, options);
+  // const observe = new IntersectionObserver(() => {
+  //   setPage((prev) => prev + 1);
+  // }, options);
 
   // const movePage = async (e) => {
   //   setLoading(true);
@@ -33,12 +33,12 @@ function MovieList() {
   //   setLoading(false);
   // };
 
-  // const scrollToTop = () => {
-  //   window.scrollTo({
-  //     top: 0,
-  //     behavior: "smooth",
-  //   });
-  // };
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
 
   const handlePopular = async () => {
     setLoading(true);
@@ -60,9 +60,9 @@ function MovieList() {
     }
   }, [index, page]);
 
-  useEffect(() => {
-    observe.observe(target.current);
-  }, []);
+  // useEffect(() => {
+  //   observe.observe(target.current);
+  // }, []);
 
   return (
     <>
@@ -88,6 +88,7 @@ function MovieList() {
           />
           <span className="page-num">{page}</span>
           <button name="next" className="next-btn" onClick={movePage} /> */}
+          <button className="up-btn" onClick={scrollToTop} />
         </div>
       </Styled.Container>
     </>
