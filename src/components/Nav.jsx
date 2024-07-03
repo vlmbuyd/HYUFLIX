@@ -49,18 +49,7 @@ function Nav() {
       <h1>
         <TitleNavLink to="/">SMUFLIX</TitleNavLink>
       </h1>
-
       <Ul>
-        <li>
-          <LiNavLink style={handleActive} to="signup">
-            회원가입
-          </LiNavLink>
-        </li>
-        <li>
-          <LiNavLink style={handleActive} to="login">
-            로그인
-          </LiNavLink>
-        </li>
         <li>
           <LiNavLink style={handleActive} to="popular">
             Popular
@@ -79,6 +68,16 @@ function Nav() {
         <li>
           <LiNavLink style={handleActive} to="upcoming">
             Upcoming
+          </LiNavLink>
+        </li>
+        <li>
+          <LiNavLink style={handleActive} to="login">
+            로그인
+          </LiNavLink>
+        </li>
+        <li>
+          <LiNavLink style={handleActive} to="signup">
+            회원가입
           </LiNavLink>
         </li>
       </Ul>
