@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { getToken } from "../api/api";
+import { signUp } from "../api/api";
 import Container from "../styles/signup";
 
 function SignUpPage() {
@@ -189,8 +189,7 @@ function SignUpPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(JSON.stringify(inputValue));
-    const response = await getToken(inputValue);
+    const response = await signUp(inputValue);
     console.log(response);
     alert("회원가입 되었습니다!");
     navigate("/login");

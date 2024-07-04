@@ -1,5 +1,3 @@
-import axios from "axios";
-
 const key = "a050f3beccdafdbb0b24bfa3ce6e3741";
 
 const pageOptions = {
@@ -29,7 +27,7 @@ const detailOptions = {
   },
 };
 
-export const getToken = async (inputValue) => {
+export const signUp = async (inputValue) => {
   const response = await fetch("http://localhost:8080/auth/signup", {
     method: "POST",
     headers: {
@@ -41,18 +39,17 @@ export const getToken = async (inputValue) => {
   return data;
 };
 
-// export const getToken = async (inputValue) => {
-//   const response = await axios.post(
-//     "http://localhost:8080/auth/signup",
-//     { inputValue },
-//     {
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//     }
-//   );
-//   return response.data;
-// };
+export const getToken = async (inputValue) => {
+  const respose = await fetch("http://localhost:8080/auth/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(inputValue),
+  });
+  const data = await respose.json();
+  return data;
+};
 
 export const getData = async (index, page) => {
   const response = await fetch(

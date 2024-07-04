@@ -1,12 +1,13 @@
 import Container from "../styles/loginpage";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { getToken } from "../api/api";
 
 function LoginPage() {
   const navigate = useNavigate();
   const [inputValue, setInputValue] = useState({
-    id: "",
-    pw: "",
+    username: "",
+    password: "",
   });
   const [inputValid, setInputValid] = useState({
     idValid: false,
@@ -24,7 +25,7 @@ function LoginPage() {
     setInputValue((prev) => ({ ...prev, [name]: value }));
 
     switch (name) {
-      case "id":
+      case "username":
         let isIdValid = value.trim().length > 0 && typeof value === "string";
         setInputValid((prev) => ({
           ...prev,
@@ -36,7 +37,7 @@ function LoginPage() {
         }));
         break;
 
-      case "pw":
+      case "password":
         const regexPw =
           /^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])[a-z0-9#?!@$%^&*-]+$/;
 
@@ -76,9 +77,10 @@ function LoginPage() {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(inputValue);
+    const response = await getToken(inputValue);
+    console.log(response);
   };
 
   return (
@@ -87,7 +89,7 @@ function LoginPage() {
       <form action="#" method="GET" onSubmit={handleSubmit}>
         <div className="id-container">
           <input
-            name="id"
+            name="username"
             className="id-input"
             placeholder="아이디"
             onChange={handleInput}
@@ -98,7 +100,7 @@ function LoginPage() {
         </div>
         <div className="pw-container">
           <input
-            name="pw"
+            name="password"
             className="pw-input"
             placeholder="비밀번호"
             type="password"
