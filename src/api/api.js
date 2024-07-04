@@ -56,7 +56,7 @@ export const getToken = async (inputValue) => {
   return data;
 };
 
-export const getUsername = async (token) => {
+export const getUserInfo = async (token) => {
   const response = await fetch("http://localhost:8080/auth/me", {
     method: "GET",
     headers: {

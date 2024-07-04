@@ -6,7 +6,7 @@ import { getToken } from "../api/api";
 
 function LoginPage() {
   const navigate = useNavigate();
-  const { isLogin, setIsLogin } = useContext(Context);
+  const { token, setToken } = useContext(Context);
   const [inputValue, setInputValue] = useState({
     username: "",
     password: "",
@@ -84,10 +84,8 @@ function LoginPage() {
     try {
       const response = await getToken(inputValue);
       localStorage.setItem(response.username, response.token);
-      setIsLogin(true);
-      navigate("/", {
-        state: { token: response.token },
-      });
+      setToken(response.token);
+      navigate("/");
     } catch (error) {
       alert("잘못된 회원 정보입니다!");
       return;

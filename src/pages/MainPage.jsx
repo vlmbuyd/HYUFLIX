@@ -1,21 +1,19 @@
 import { useContext, useEffect, useState } from "react";
 import { getSearch } from "../api/api";
 import { Link, useLocation } from "react-router-dom";
-import { getUsername } from "../api/api";
+import { getUserInfo } from "../api/api";
 import { Context } from "../components/App";
 import useDebounce from "../hooks/useDebounce";
 import Styled from "../styles/mainpage";
 import starIcon from "../assets/star.png";
 
 function MainPage() {
+  const [name, setName] = useState("");
   const [inputValue, setInputValue] = useState("");
   const [searchData, setsearchData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const location = useLocation();
-  const token = location.state.token;
-  const isLogin = useContext(Context);
-
+  const { token, setToken } = useContext(Context);
   const debouncedValue = useDebounce(inputValue, 1000);
 
   useEffect(() => {
@@ -33,9 +31,9 @@ function MainPage() {
   }, [debouncedValue]);
 
   const handleUsername = async () => {
-    const response = await getUsername(token);
+    const response = await getUserInfo(token);
+    setName(response.name);
     console.log(response);
-    console.log(isLogin);
   };
 
   useEffect(() => {
@@ -55,7 +53,9 @@ function MainPage() {
   return (
     <>
       <Styled.Container>
-        <h1 className="welcome">환영합니다</h1>
+        <h1 className="welcome">
+          {token ? `${name}님 환영합니다` : "환영합니다"}
+        </h1>
         <h2>🎬Find your movies!</h2>
         <div className="input-container">
           <form onSubmit={handleSubmit} action="GET">

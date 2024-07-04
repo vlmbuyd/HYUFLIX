@@ -16,10 +16,10 @@ const Container = styled.div`
 export const Context = createContext();
 
 function App() {
-  const [isLogin, setIsLogin] = useState(false);
+  const [token, setToken] = useState("");
 
   return (
-    <Context.Provider value={{ isLogin, setIsLogin }}>
+    <Context.Provider value={{ token, setToken }}>
       <Container>
         <GlobalStyles></GlobalStyles>
         <Nav />

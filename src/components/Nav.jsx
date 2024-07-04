@@ -1,5 +1,7 @@
-import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { Context } from "./App";
+import { useContext } from "react";
+import { getUserInfo } from "../api/api";
 import styled from "styled-components";
 
 const NavContainer = styled.div`
@@ -43,7 +45,29 @@ function handleActive({ isActive }) {
   };
 }
 
+function handleLogin({ isActive }) {
+  return {
+    color: isActive ? "#3d2a7e" : "white",
+    fontWeight: isActive ? "700" : "400",
+  };
+}
+
 function Nav() {
+  const { token, setToken } = useContext(Context);
+
+  const navigate = useNavigate();
+
+  const handleSession = async () => {
+    if (token) {
+      // 로그아웃
+      const response = await getUserInfo(token);
+      setToken("");
+      localStorage.removeItem(response.username);
+      alert("로그아웃 되었습니다");
+      navigate("/");
+    }
+  };
+
   return (
     <NavContainer>
       <h1>
@@ -71,15 +95,23 @@ function Nav() {
           </LiNavLink>
         </li>
         <li>
-          <LiNavLink style={handleActive} to="login">
-            로그인
-          </LiNavLink>
+          {token ? (
+            <LiNavLink style={handleLogin} onClick={handleSession}>
+              로그아웃
+            </LiNavLink>
+          ) : (
+            <LiNavLink style={handleActive} to="login" onClick={handleSession}>
+              로그인
+            </LiNavLink>
+          )}
         </li>
-        <li>
-          <LiNavLink style={handleActive} to="signup">
-            회원가입
-          </LiNavLink>
-        </li>
+        {token ? null : (
+          <li>
+            <LiNavLink style={handleActive} to="signup">
+              회원가입
+            </LiNavLink>
+          </li>
+        )}
       </Ul>
     </NavContainer>
   );
