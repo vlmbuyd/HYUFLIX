@@ -56,6 +56,18 @@ export const getToken = async (inputValue) => {
   return data;
 };
 
+export const getUsername = async (token) => {
+  const response = await fetch("http://localhost:8080/auth/me", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  const data = await response.json();
+  return data;
+};
+
 export const getData = async (index, page) => {
   const response = await fetch(
     `https://api.themoviedb.org/3/movie/${index}?language=en-US&page=${page}?`,

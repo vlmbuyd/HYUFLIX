@@ -1,10 +1,12 @@
 import Container from "../styles/loginpage";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Context } from "../components/App";
 import { getToken } from "../api/api";
 
 function LoginPage() {
   const navigate = useNavigate();
+  const { isLogin, setIsLogin } = useContext(Context);
   const [inputValue, setInputValue] = useState({
     username: "",
     password: "",
@@ -81,8 +83,11 @@ function LoginPage() {
     e.preventDefault();
     try {
       const response = await getToken(inputValue);
-      console.log(response);
-      navigate("/");
+      localStorage.setItem(response.username, response.token);
+      setIsLogin(true);
+      navigate("/", {
+        state: { token: response.token },
+      });
     } catch (error) {
       alert("잘못된 회원 정보입니다!");
       return;

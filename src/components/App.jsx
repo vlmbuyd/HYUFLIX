@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Outlet } from "react-router-dom";
+import { createContext, useState } from "react";
 import Nav from "./Nav";
 import Footer from "./Footer";
 import GlobalStyles from "./GlobalStyles";
@@ -12,16 +13,20 @@ const Container = styled.div`
   /* background-color: #292a54; */
 `;
 
+export const Context = createContext();
+
 function App() {
+  const [isLogin, setIsLogin] = useState(false);
+
   return (
-    <Container>
-      <GlobalStyles></GlobalStyles>
-      <Nav />
-      <div>
+    <Context.Provider value={{ isLogin, setIsLogin }}>
+      <Container>
+        <GlobalStyles></GlobalStyles>
+        <Nav />
         <Outlet></Outlet>
-      </div>
-      <Footer />
-    </Container>
+        <Footer />
+      </Container>
+    </Context.Provider>
   );
 }
 
