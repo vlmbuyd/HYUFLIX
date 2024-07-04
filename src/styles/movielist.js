@@ -47,11 +47,11 @@ const Container = styled.div`
 
     .up-btn {
       position: fixed;
-      bottom: 0;
-      right: 0;
+      bottom: 20px;
+      right: 50px;
       background-image: url(${upBtn});
-      width: 64px;
-      height: 64px;
+      width: 32px;
+      height: 32px;
     }
   }
 `;

@@ -27,14 +27,17 @@ const detailOptions = {
   },
 };
 
-// export const getAPI = async (index) => {
-//   const response = await fetch(
-//     `https://api.themoviedb.org/3/movie/${index}?language=en-US&page=1?`,
-//     pageOptions
-//   );
-//   const data = response.json();
-//   return data;
-// };
+export const getToken = async (inputValue) => {
+  const response = await fetch("http://localhost:8080/auth/signup", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(inputValue),
+  });
+  const data = response.json();
+  return data;
+};
 
 export const getData = async (index, page) => {
   const response = await fetch(

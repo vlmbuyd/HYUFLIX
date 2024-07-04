@@ -12,13 +12,13 @@ function MovieList() {
   const [loading, setLoading] = useState(true);
   const { idx } = useParams();
   const target = useRef(null);
+  const observer = useRef(null);
+
   const options = {
     thresold: 0.5,
   };
-  // const observe = new IntersectionObserver(() => {
-  //   setPage((prev) => prev + 1);
-  // }, options);
 
+  // Pagination
   // const movePage = async (e) => {
   //   setLoading(true);
   //   const moveState = e.target.name;
@@ -40,7 +40,7 @@ function MovieList() {
     });
   };
 
-  const handlePopular = async () => {
+  const handlePopular = async (index) => {
     setLoading(true);
     const response = await getData(index, page);
     const data = response.results;
@@ -60,9 +60,13 @@ function MovieList() {
     }
   }, [index, page]);
 
-  // useEffect(() => {
-  //   observe.observe(target.current);
-  // }, []);
+  useEffect(() => {
+    observe.observe(target.current);
+  }, []);
+
+  const observe = new IntersectionObserver(() => {
+    setPage((prev) => prev + 1);
+  }, options);
 
   return (
     <>

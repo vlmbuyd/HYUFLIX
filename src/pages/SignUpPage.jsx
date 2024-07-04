@@ -1,28 +1,29 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { getToken } from "../api/api";
 import Container from "../styles/signup";
 
 function SignUpPage() {
   const navigate = useNavigate();
   const [inputValue, setInputValue] = useState({
-    username: "",
-    id: "",
+    name: "",
     email: "",
     age: "",
-    pw: "",
-    pwCheck: "",
+    username: "",
+    password: "",
+    passwordCheck: "",
   });
   const [inputValid, setInputValid] = useState({
+    nameValid: false,
     usernameValid: false,
-    idValid: false,
     emailValid: false,
     ageValid: false,
     pwValid: false,
     pwCheckValid: false,
   });
   const [errorMessage, setErrorMessage] = useState({
+    nameMsg: "",
     usernameMsg: "",
-    idMsg: "",
     emailMsg: "",
     ageMsg: "",
     pwMsg: "",
@@ -30,8 +31,8 @@ function SignUpPage() {
   });
 
   const submitRequirements =
+    inputValid.nameValid &&
     inputValid.usernameValid &&
-    inputValid.idValid &&
     inputValid.emailValid &&
     inputValid.ageValid &&
     inputValid.pwValid &&
@@ -42,27 +43,27 @@ function SignUpPage() {
     setInputValue((prev) => ({ ...prev, [name]: value }));
 
     switch (name) {
-      case "username":
+      case "name":
         let isNameValid = value.trim().length > 0 && typeof value === "string";
         setInputValid((prev) => ({
           ...prev,
-          usernameValid: isNameValid,
+          nameValid: isNameValid,
         }));
         setErrorMessage((prev) => ({
           ...prev,
-          usernameMsg: "이름을 입력해주세요!",
+          nameMsg: "이름을 입력해주세요!",
         }));
         break;
 
-      case "id":
+      case "username":
         let isIdValid = value.trim().length > 0 && typeof value === "string";
         setInputValid((prev) => ({
           ...prev,
-          idValid: isIdValid,
+          usernameValid: isIdValid,
         }));
         setErrorMessage((prev) => ({
           ...prev,
-          idMsg: "아이디를 입력해주세요!",
+          usernameMsg: "아이디를 입력해주세요!",
         }));
         break;
 
@@ -128,7 +129,7 @@ function SignUpPage() {
         }
         break;
 
-      case "pw":
+      case "password":
         const regexPw =
           /^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])[a-z0-9#?!@$%^&*-]+$/;
 
@@ -166,8 +167,8 @@ function SignUpPage() {
         }
         break;
 
-      case "pwCheck":
-        let isPwCheckValid = value === inputValue.pw;
+      case "passwordCheck":
+        let isPwCheckValid = value === inputValue.password;
         setInputValid((prev) => ({
           ...prev,
           pwCheckValid: isPwCheckValid,
@@ -186,12 +187,13 @@ function SignUpPage() {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(inputValue);
+    const response = await getToken(inputValue);
+    console.log(response);
     alert("회원가입 되었습니다!");
     navigate("/login");
-
-    console.log(inputValue);
   };
 
   // useEffect(() => {
@@ -204,8 +206,8 @@ function SignUpPage() {
       <form action="#" method="GET" onSubmit={handleSubmit}>
         <div className="username-container">
           <input
-            name="username"
-            value={inputValue.username}
+            name="name"
+            value={inputValue.name}
             onChange={handleInput}
             placeholder="이름을 입력해주세요"
           />
@@ -216,8 +218,8 @@ function SignUpPage() {
 
         <div className="id-container">
           <input
-            name="id"
-            value={inputValue.id}
+            name="username"
+            value={inputValue.username}
             onChange={handleInput}
             placeholder="아이디를 입력해주세요"
           />
@@ -250,7 +252,7 @@ function SignUpPage() {
 
         <div className="pw-container">
           <input
-            name="pw"
+            name="password"
             onChange={handleInput}
             placeholder="비밀번호를 입력해주세요"
             type="password"
@@ -262,7 +264,7 @@ function SignUpPage() {
 
         <div className="pwcheck-container">
           <input
-            name="pwCheck"
+            name="passwordCheck"
             onChange={handleInput}
             placeholder="비밀번호를 입력해주세요"
             type="password"
