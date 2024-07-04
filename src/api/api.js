@@ -47,6 +47,11 @@ export const getToken = async (inputValue) => {
     },
     body: JSON.stringify(inputValue),
   });
+
+  if (!respose.ok) {
+    throw new Error("error");
+  }
+
   const data = await respose.json();
   return data;
 };

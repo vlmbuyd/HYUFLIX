@@ -79,8 +79,14 @@ function LoginPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await getToken(inputValue);
-    console.log(response);
+    try {
+      const response = await getToken(inputValue);
+      console.log(response);
+      navigate("/");
+    } catch (error) {
+      alert("잘못된 회원 정보입니다!");
+      return;
+    }
   };
 
   return (
