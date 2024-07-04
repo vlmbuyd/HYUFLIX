@@ -189,7 +189,7 @@ function SignUpPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(inputValue);
+    console.log(JSON.stringify(inputValue));
     const response = await getToken(inputValue);
     console.log(response);
     alert("회원가입 되었습니다!");
@@ -211,8 +211,8 @@ function SignUpPage() {
             onChange={handleInput}
             placeholder="이름을 입력해주세요"
           />
-          {inputValid.usernameValid ? null : (
-            <span className="error-message">{errorMessage.usernameMsg}</span>
+          {inputValid.nameValid ? null : (
+            <span className="error-message">{errorMessage.nameMsg}</span>
           )}
         </div>
 
@@ -223,8 +223,8 @@ function SignUpPage() {
             onChange={handleInput}
             placeholder="아이디를 입력해주세요"
           />
-          {inputValid.idValid ? null : (
-            <span className="error-message">{errorMessage.idMsg}</span>
+          {inputValid.usernameValid ? null : (
+            <span className="error-message">{errorMessage.usernameMsg}</span>
           )}
         </div>
 

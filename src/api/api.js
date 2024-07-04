@@ -1,3 +1,5 @@
+import axios from "axios";
+
 const key = "a050f3beccdafdbb0b24bfa3ce6e3741";
 
 const pageOptions = {
@@ -35,9 +37,22 @@ export const getToken = async (inputValue) => {
     },
     body: JSON.stringify(inputValue),
   });
-  const data = response.json();
+  const data = await response.json();
   return data;
 };
+
+// export const getToken = async (inputValue) => {
+//   const response = await axios.post(
+//     "http://localhost:8080/auth/signup",
+//     { inputValue },
+//     {
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//     }
+//   );
+//   return response.data;
+// };
 
 export const getData = async (index, page) => {
   const response = await fetch(
