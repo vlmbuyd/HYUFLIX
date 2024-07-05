@@ -39,9 +39,13 @@ function Nav() {
     setSidebarOpen(!sidebarOpen);
   };
 
+  const closedSidebar = () => {
+    setSidebarOpen(false);
+  };
+
   return (
     <Styled.NavContainer>
-      <h1>
+      <h1 onClick={closedSidebar}>
         <Styled.TitleNavLink to="/">SMUFLIX</Styled.TitleNavLink>
       </h1>
       <ul className="menu">

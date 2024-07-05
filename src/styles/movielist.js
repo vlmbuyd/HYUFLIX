@@ -4,6 +4,8 @@ import prevBtn from "../assets/prev-btn.png";
 import upBtn from "../assets/up-btn.png";
 
 const Container = styled.div`
+  display: flex;
+  justify-content: center;
   width: 100%;
   background-color: #1f2047;
 
@@ -52,6 +54,10 @@ const Container = styled.div`
       background-image: url(${upBtn});
       width: 32px;
       height: 32px;
+
+      @media screen and (max-width: 767px) {
+        bottom: 35px;
+        right: 30px;
     }
   }
 `;

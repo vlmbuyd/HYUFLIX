@@ -58,7 +58,7 @@ const SidebarIcon = styled.button`
 const SidebarMenu = styled.div`
   display: none;
   position: relative;
-  top: 4px;
+  top: 25px;
   left: 0;
   width: 100%;
   z-index: 1;
@@ -67,7 +67,7 @@ const SidebarMenu = styled.div`
     display: flex;
     flex-direction: column;
     width: inherit;
-    height: 90vh;
+    height: 92vh;
     padding: 15px 20px;
     background-color: rgba(36, 37, 73, 0.98);
   }
