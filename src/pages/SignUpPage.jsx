@@ -1,9 +1,11 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { signUp } from "../api/api";
 import Container from "../styles/signup";
 
 function SignUpPage() {
+  const navigate = useNavigate();
+
   const [inputValue, setInputValue] = useState({
     name: "",
     email: "",
@@ -191,11 +193,8 @@ function SignUpPage() {
     const response = await signUp(inputValue);
     console.log(response);
     alert("회원가입 되었습니다!");
+    navigate("/login");
   };
-
-  // useEffect(() => {
-  //   handleInput();
-  // }, [inputValue]);
 
   return (
     <Container>

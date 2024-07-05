@@ -1,42 +1,9 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Context } from "./App";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { getUserInfo } from "../api/api";
-import styled from "styled-components";
-
-const NavContainer = styled.div`
-  height: 60px;
-  background-color: #0e0f36;
-`;
-
-const Ul = styled.ul`
-  display: flex;
-  position: absolute;
-  top: 20px;
-  right: 5px;
-
-  & li {
-    margin-right: 15px;
-  }
-`;
-
-const TitleNavLink = styled(NavLink)`
-  display: inline-block;
-  margin: 12px 0 0 15px;
-  font-size: 22px;
-  color: white;
-  font-weight: 400;
-`;
-
-const LiNavLink = styled(NavLink)`
-  font-size: 13px;
-  color: white;
-
-  &:hover {
-    font-size: 14px;
-    font-weight: 700;
-  }
-`;
+import Styled from "../styles/nav";
+import sidebarIcon from "../assets/side-bar.png";
 
 function handleActive({ isActive }) {
   return {
@@ -47,19 +14,19 @@ function handleActive({ isActive }) {
 
 function handleLogin({ isActive }) {
   return {
-    color: isActive ? "#3d2a7e" : "white",
+    color: isActive ? "#473c6d" : "white",
     fontWeight: isActive ? "700" : "400",
   };
 }
 
 function Nav() {
   const { token, setToken } = useContext(Context);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const navigate = useNavigate();
 
   const handleSession = async () => {
     if (token) {
-      // 로그아웃
       const response = await getUserInfo(token);
       setToken("");
       localStorage.removeItem(response.username);
@@ -68,52 +35,111 @@ function Nav() {
     }
   };
 
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen);
+  };
+
   return (
-    <NavContainer>
+    <Styled.NavContainer>
       <h1>
-        <TitleNavLink to="/">SMUFLIX</TitleNavLink>
+        <Styled.TitleNavLink to="/">SMUFLIX</Styled.TitleNavLink>
       </h1>
-      <Ul>
+      <ul className="menu">
         <li>
-          <LiNavLink style={handleActive} to="popular">
+          <Styled.LiNavLink style={handleActive} to="popular">
             Popular
-          </LiNavLink>
+          </Styled.LiNavLink>
         </li>
         <li>
-          <LiNavLink style={handleActive} to="now_playing">
+          <Styled.LiNavLink style={handleActive} to="now_playing">
             Now Playing
-          </LiNavLink>
+          </Styled.LiNavLink>
         </li>
         <li>
-          <LiNavLink style={handleActive} to="top_rated">
+          <Styled.LiNavLink style={handleActive} to="top_rated">
             Top Rated
-          </LiNavLink>
+          </Styled.LiNavLink>
         </li>
         <li>
-          <LiNavLink style={handleActive} to="upcoming">
+          <Styled.LiNavLink style={handleActive} to="upcoming">
             Upcoming
-          </LiNavLink>
+          </Styled.LiNavLink>
         </li>
         <li>
           {token ? (
-            <LiNavLink style={handleLogin} onClick={handleSession}>
+            <Styled.LiNavLink style={handleLogin} onClick={handleSession}>
               로그아웃
-            </LiNavLink>
+            </Styled.LiNavLink>
           ) : (
-            <LiNavLink style={handleActive} to="login" onClick={handleSession}>
+            <Styled.LiNavLink
+              style={handleActive}
+              to="login"
+              onClick={handleSession}
+            >
               로그인
-            </LiNavLink>
+            </Styled.LiNavLink>
           )}
         </li>
         {token ? null : (
           <li>
-            <LiNavLink style={handleActive} to="signup">
+            <Styled.LiNavLink style={handleActive} to="signup">
               회원가입
-            </LiNavLink>
+            </Styled.LiNavLink>
           </li>
         )}
-      </Ul>
-    </NavContainer>
+      </ul>
+      <Styled.SidebarIcon onClick={toggleSidebar}>
+        <img src={sidebarIcon} alt="sidebar-icon" />
+      </Styled.SidebarIcon>
+      {sidebarOpen && (
+        <Styled.SidebarMenu>
+          <ul className="sidebar-menu">
+            <li onClick={toggleSidebar}>
+              <Styled.SidebarLink style={handleActive} to="popular">
+                Popular
+              </Styled.SidebarLink>
+            </li>
+            <li onClick={toggleSidebar}>
+              <Styled.SidebarLink style={handleActive} to="now_playing">
+                Now Playing
+              </Styled.SidebarLink>
+            </li>
+            <li onClick={toggleSidebar}>
+              <Styled.SidebarLink style={handleActive} to="top_rated">
+                Top Rated
+              </Styled.SidebarLink>
+            </li>
+            <li onClick={toggleSidebar}>
+              <Styled.SidebarLink style={handleActive} to="upcoming">
+                Upcoming
+              </Styled.SidebarLink>
+            </li>
+            <li onClick={toggleSidebar}>
+              {token ? (
+                <Styled.SidebarLink style={handleLogin} onClick={handleSession}>
+                  로그아웃
+                </Styled.SidebarLink>
+              ) : (
+                <Styled.SidebarLink
+                  style={handleActive}
+                  to="login"
+                  onClick={handleSession}
+                >
+                  로그인
+                </Styled.SidebarLink>
+              )}
+            </li>
+            {token ? null : (
+              <li onClick={toggleSidebar}>
+                <Styled.SidebarLink style={handleActive} to="signup">
+                  회원가입
+                </Styled.SidebarLink>
+              </li>
+            )}
+          </ul>
+        </Styled.SidebarMenu>
+      )}
+    </Styled.NavContainer>
   );
 }
 

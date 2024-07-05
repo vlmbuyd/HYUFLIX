@@ -30,7 +30,7 @@ function MainPage() {
     fetchData();
   }, [debouncedValue]);
 
-  const handleUsername = async () => {
+  const handleUserInfo = async () => {
     const response = await getUserInfo(token);
     setName(response.name);
     console.log(response);
@@ -38,7 +38,7 @@ function MainPage() {
 
   useEffect(() => {
     if (token) {
-      handleUsername();
+      handleUserInfo();
     }
   }, []);
 
