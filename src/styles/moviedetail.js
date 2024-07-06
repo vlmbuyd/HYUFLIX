@@ -5,7 +5,7 @@ const Container = styled.div`
   align-items: center;
   position: relative;
   width: 100%;
-  height: 89vh;
+  height: 91vh;
   padding-left: 15%;
 
   &::before {
@@ -20,54 +20,76 @@ const Container = styled.div`
     background-size: cover;
   }
 
-  .movie-img {
-    margin-right: 80px;
+  .content-container {
+    display: flex;
+    /* justify-content: space-around; */
 
-    img {
-      width: 300px;
-      height: 420px;
-      object-fit: cover;
-      opacity: 0.9;
+    .movie-img {
+      margin-right: 80px;
+
+      img {
+        width: 300px;
+        height: 420px;
+        object-fit: cover;
+        opacity: 0.9;
+      }
     }
-  }
 
-  .description {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: flex-start;
-    max-width: 600px;
-    height: 400px;
-    color: white;
-  }
+    .description {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: flex-start;
+      overflow: hidden;
+      height: 400px;
+      color: white;
+    }
 
-  .title {
-    width: 550px;
-    font-size: 30px;
-  }
+    .title {
+      width: 550px;
+      font-size: 30px;
+    }
 
-  .rating,
-  .release-date,
-  .plot-title {
-    font-size: 17px;
-  }
+    .rating,
+    .release-date,
+    .plot-title {
+      font-size: 17px;
+    }
 
-  .rating {
-    display: inline-block;
-    margin-right: 10px;
-  }
+    .rating {
+      display: inline-block;
+      margin-right: 10px;
+    }
 
-  .plot-container {
-    display: flex;
-    flex-direction: column;
-  }
+    .plot-container {
+      display: flex;
+      flex-direction: column;
+      max-width: 550px;
 
-  .plot-title {
-    margin-bottom: 10px;
-  }
-  .plot {
-    font-size: 15px;
-    line-height: 1.5em;
+      @media screen and (max-width: 1200px) {
+        max-width: 400px;
+      }
+
+      @media screen and (max-width: 1023px) {
+        max-width: 250px;
+      }
+
+      @media screen and (max-width: 767px) {
+        max-width: 150px;
+      }
+    }
+
+    .plot-title {
+      margin-bottom: 10px;
+    }
+    .plot {
+      display: flex;
+      flex-wrap: nowrap;
+      font-size: 15px;
+      line-height: 1.5em;
+      /* max-width: 400px; */
+    }
   }
 `;
 

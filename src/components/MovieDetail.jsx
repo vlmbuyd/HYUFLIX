@@ -39,31 +39,33 @@ function MovieDetail() {
           item.belongs_to_collection?.backdrop_path || item.backdrop_path
         }`}
       >
-        <div className="movie-img">
-          <img
-            src={`https://image.tmdb.org/t/p/original${item.backdrop_path}`}
-            alt={item.original_title}
-          />
-        </div>
+        <div className="content-container">
+          <div className="movie-img">
+            <img
+              src={`https://image.tmdb.org/t/p/original${item.backdrop_path}`}
+              alt={item.original_title}
+            />
+          </div>
 
-        <div className="description">
-          <h1 className="title">{item.original_title}</h1>
-          <Styled.RatingContainer>
-            <strong className="rating">평점 </strong>
-            <Styled.IconContainer>
-              {Array.from({ length: rating }, (_, i) => {
-                return <img key={i} src={starIcon} value={rating} />;
-              })}
-            </Styled.IconContainer>
-          </Styled.RatingContainer>
-          <strong className="release-date">개봉일 {item.release_date}</strong>
-          <div className="plot-container">
-            <strong className="plot-title">줄거리</strong>
-            <p className="plot">
-              {item.overview === ""
-                ? "TMDB에서 제공하는 API에 상세 줄거리 정보가 없습니다."
-                : item.overview}
-            </p>
+          <div className="description">
+            <h1 className="title">{item.original_title}</h1>
+            <Styled.RatingContainer>
+              <strong className="rating">평점 </strong>
+              <Styled.IconContainer>
+                {Array.from({ length: rating }, (_, i) => {
+                  return <img key={i} src={starIcon} value={rating} />;
+                })}
+              </Styled.IconContainer>
+            </Styled.RatingContainer>
+            <strong className="release-date">개봉일 {item.release_date}</strong>
+            <div className="plot-container">
+              <strong className="plot-title">줄거리</strong>
+              <p className="plot">
+                {item.overview === ""
+                  ? "TMDB에서 제공하는 API에 상세 줄거리 정보가 없습니다."
+                  : item.overview}
+              </p>
+            </div>
           </div>
         </div>
       </Styled.Container>
